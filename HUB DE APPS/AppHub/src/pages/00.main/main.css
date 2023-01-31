@@ -9,6 +9,7 @@ header {
   justify-content: flex-end;
   align-items: center;
   border-bottom: 15px solid var(--secundary1);
+  border-bottom-left-radius: 105px;
 }
 header button {
     height: 6vh;
