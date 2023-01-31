@@ -2,3 +2,4 @@ gif https://res.cloudinary.com/di0zpa5yw/image/upload/v1675183435/gamesHub/giphy
 github logo https://res.cloudinary.com/di0zpa5yw/image/upload/v1675183434/gamesHub/github_cxjker.png
 vercel logo https://res.cloudinary.com/di0zpa5yw/image/upload/v1675183434/gamesHub/vercel_xqulbz.png
 paint https://res.cloudinary.com/di0zpa5yw/image/upload/v1675189215/gamesHub/paint-palette_hgwh5c.png
+ico https://res.cloudinary.com/di0zpa5yw/image/upload/v1675200689/gamesHub/maquina-de-arcade_t9iwgd.png
