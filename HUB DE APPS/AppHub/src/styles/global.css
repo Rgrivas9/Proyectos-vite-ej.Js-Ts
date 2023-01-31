@@ -1,0 +1,31 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    font-size: 16px;
+}
+.firstTheme {
+    background-color: var(--background1);
+}
+.secondTheme {
+    background-color: var(--background2);
+}
+.thirdTheme {
+    background-color: var(--background3);
+}
+.fourthTheme {
+    background-color: var(--background4);
+}
+.fifthTheme {
+    background-color: var(--background5);
+}
+.sixthTheme {
+    background-color: var(--background6);
+}
+.seventhTheme {
+    background-color: var(--background7);
+}
+.eighthTheme {
+    background-color: var(--background8);
+}
+.ninethTheme {
+    background-color: var(--background9);
+}

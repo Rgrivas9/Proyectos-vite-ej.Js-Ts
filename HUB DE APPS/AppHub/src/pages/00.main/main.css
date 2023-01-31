@@ -1,0 +1,193 @@
+body {
+    background-color: var(--secundary1);
+    color: var(--highlight1);
+}
+header {
+  background-color: var(--highlight1);
+  min-height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  border-bottom: 15px solid var(--secundary1);
+}
+header button {
+    height: 6vh;
+    width: 7vh;
+    margin-right: 2vw;
+    border-radius: 60%;
+    border: none;
+    background-color: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header button img {
+    width: 80%;
+    filter: grayscale(100%);
+    transition: all 0.2s ease-in-out;
+
+}
+header button img:hover{
+    filter: grayscale(0%);
+    width: 85%;
+}
+main {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 105px;
+  border-top: 15px solid var(--main1);
+  border-right: 15px solid var(--main1);
+  background-color: var(--background1);
+}
+main div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+  padding-bottom: 5vh;
+}
+main h1 {
+    font-size: 8vw;
+    width: 45vw;
+    min-height: 20vh;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 5vh;
+    text-shadow:  1px 1px 2px black;
+}
+main h3 {
+    font-size: 2vh;
+    text-shadow:  0.1px 0.1px 2px rgba(0, 0, 0, 0.384);
+}
+main input {
+    width: 300px;
+    height: 35px;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(0, 0, 0, 0.342);;
+    padding-left: 15px;
+    padding-bottom: 10.5px;
+    color: var(--principal1);
+    text-shadow:  0.1px 0.1px 2px rgba(0, 0, 0, 0.384);
+    font-weight: 900;
+}
+main button {
+    width: 80px;
+    height: 30px;
+    padding-bottom: 0.2rem;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.342);
+    color: var(--secundary1);
+    
+}
+main button:hover {
+    width: 90px;
+    color: var(--principal1);
+}
+main button:hover h3 {
+    font-size: 1.4rem;
+    
+}
+footer {
+  min-height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2rem;
+  background-color: var(--principal1);
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+footer ul {
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2rem;
+}
+footer a {
+  height: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 0.25rem;
+  color: var(--secundary1);
+  transition: all 0.2s ease-in-out;
+}
+footer a:hover {
+    filter: brightness(190%);
+}
+footer a:hover img{
+    filter: invert(50%);
+}
+footer img {
+  width: 30px;
+}
+
+@media  screen and (max-width:700px) {
+    main h1 {
+        width: 80vw;
+        font-size: 14vw
+    }
+    main h3 {
+        font-size: 1.5vh;
+    }
+    main input {
+        width: 200px;
+    }
+}
+@media  screen and (max-height:420px) {
+    main {
+        min-height: 77.33vh;
+    }
+    main h1 {
+        width: 60vw;
+        font-size: 9vw
+    }
+    main h3 {
+        font-size: 3.5vh;
+    }
+    main input {
+        width: 200px;
+    }
+    main div {
+        padding-bottom: 0;
+        height: 75.5vh;
+    }
+    footer a {
+        padding: 1px;
+    }
+}
+@media  screen and (max-height:320px) {
+    main {
+        min-height: 77.33vh;
+    }
+    main h1 {
+        width: 60vw;
+        font-size: 7vw
+    }
+    main h3 {
+        font-size: 3.5vh;
+    }
+    main input {
+        width: 200px;
+    }
+    main div {
+        padding-bottom: 0;
+        height: 74.5vh;
+    }
+    footer a {
+        padding: 1px;
+    }
+}
