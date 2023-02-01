@@ -44,6 +44,7 @@ main {
   background-size: cover;
   background-position-x: center;
   background-position-y: 87%;
+  transition: all 0.4s ease-in-out;
 }
 .nobackground {
     background-color: rgba(0, 0, 0, 0)
