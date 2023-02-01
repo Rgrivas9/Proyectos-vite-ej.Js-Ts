@@ -44,7 +44,7 @@ main {
   background-size: cover;
   background-position-x: center;
   background-position-y: 87%;
-  transition: all 0.4s ease-in-out;
+  transition: background-color 0.2s ease-out;
 }
 .nobackground {
     background-color: rgba(0, 0, 0, 0)
@@ -88,6 +88,18 @@ main div {
   gap: 2vh;
   padding-bottom: 5vh;
 }
+.mainLogOut img{
+  width: 40px;
+}
+.divLog {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 400px;
+}
+.divLog h4 {
+  font-size: 28px;
+}
 main h1 {
   font-size: 8vw;
   width: 45vw;
@@ -130,8 +142,19 @@ main button:hover {
   width: 90px;
   color: var(--principal1);
 }
+
 main button:hover h3 {
   font-size: 1.4rem;
+}
+.divLog button {
+  width: 43px;
+  height: 43px;
+  background-color: rgba(245, 222, 179, 0);
+  padding-top: 5px;
+}
+.divLog button:hover {
+  width: 43px;
+  filter: invert(100%);
 }
 footer {
   min-height: 10vh;
@@ -170,7 +193,9 @@ footer a:hover img {
 footer img {
   width: 30px;
 }
-
+.mainNone{
+  display: none;
+}
 @media screen and (max-width: 700px) {
   main h1 {
     width: 80vw;
@@ -182,6 +207,9 @@ footer img {
   main input {
     width: 200px;
   }
+  .divLog h4 {
+    font-size: 15px;
+  }
 }
 @media screen and (max-height: 420px) {
   main {
@@ -189,7 +217,7 @@ footer img {
   }
   main h1 {
     width: 60vw;
-    font-size: 9vw;
+    font-size: 5vw;
   }
   main h3 {
     font-size: 3.5vh;
@@ -204,6 +232,7 @@ footer img {
   footer a {
     padding: 1px;
   }
+  
 }
 @media screen and (max-height: 320px) {
   main {
@@ -211,7 +240,7 @@ footer img {
   }
   main h1 {
     width: 60vw;
-    font-size: 7vw;
+    font-size: 4vw;
   }
   main h3 {
     font-size: 3.5vh;

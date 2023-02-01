@@ -5,3 +5,12 @@ paint https://res.cloudinary.com/di0zpa5yw/image/upload/v1675189215/gamesHub/pai
 ico https://res.cloudinary.com/di0zpa5yw/image/upload/v1675200689/gamesHub/maquina-de-arcade_t9iwgd.png
 cockpit https://res.cloudinary.com/di0zpa5yw/image/upload/v1675242204/gamesHub/aaa_rx6gak.png
 video lightspeed https://res.cloudinary.com/di0zpa5yw/video/upload/v1675239845/gamesHub/Millennium_falcon_hyperdrive_effect_tukotn.mp4
+poke https://res.cloudinary.com/di0zpa5yw/image/upload/v1675262466/gamesHub/pokebola_otj1s7.png
+memory  https://res.cloudinary.com/di0zpa5yw/image/upload/v1675262466/gamesHub/memory_b2hliw.png
+quiz https://res.cloudinary.com/di0zpa5yw/image/upload/v1675262466/gamesHub/trophy_hclcrq.png
+hangman https://res.cloudinary.com/di0zpa5yw/image/upload/v1675262466/gamesHub/hangman-game_kyfnls.png
+mazo https://res.cloudinary.com/di0zpa5yw/image/upload/v1675262466/gamesHub/mazo_fnwgoh.png
+tictac https://res.cloudinary.com/di0zpa5yw/image/upload/v1675262466/gamesHub/tic-tac-toe_zkaqxh.png
+exit https://res.cloudinary.com/di0zpa5yw/image/upload/v1675264883/gamesHub/salida_bspcsc.png
+info https://res.cloudinary.com/di0zpa5yw/image/upload/v1675265110/gamesHub/info_gkkmvw.png
+logout https://res.cloudinary.com/di0zpa5yw/image/upload/v1675277789/gamesHub/cerrar-sesion_npnjo3.png

@@ -1,8 +1,15 @@
+import { principal } from "../pages/01.0principal/principal";
+
 export const eventMainButton = (): void => {
   const input = document.querySelector<HTMLInputElement>(
     "input"
   ) as HTMLInputElement;
+  const MainBtn = document.querySelector<HTMLButtonElement>('#mainbutton') as HTMLButtonElement
+  const logOut = document.querySelector<HTMLButtonElement>('#logOutMainButton') as HTMLButtonElement
   if (input.value !== "") {
+    input.setAttribute('readonly',"true")
+    MainBtn.setAttribute('disabled','true')
+    logOut.setAttribute('disabled','true')
     const video = document.querySelector<HTMLVideoElement>(
       "#videoFalcon"
     ) as HTMLVideoElement;
@@ -23,7 +30,8 @@ export const eventMainButton = (): void => {
     const cover=document.querySelector<HTMLDivElement>('.cover') as HTMLDivElement
     setTimeout(()=>{cover.setAttribute('class','coveractive')},5400)
     setTimeout(()=>{cover.setAttribute('class','cover')},7400)
-    setTimeout(()=>{body.removeChild(header);body.removeChild(main);body.removeChild(footer)},6400)
+    setTimeout(()=>{body.removeChild(header);body.removeChild(main);body.removeChild(footer);principal()},6400)
+    setTimeout(()=>{body.removeChild(video);body.removeChild(cover)},8500)
   } else {
     alert("Debes introducir un nombre!!");
   }

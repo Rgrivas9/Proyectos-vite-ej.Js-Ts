@@ -5,7 +5,7 @@ import { mainButton } from "../../components/mainButton";
 import { mainInput } from "../../components/mainInput";
 import { mediaAnchor } from "../../components/mediaAnchor";
 import "./main.css";
-import "./switch.css";
+import { imgButton } from "../../components/imgButton";
 
 export const main = (): void => {
   const header = document.querySelector<HTMLElement>("header") as HTMLElement;
@@ -20,9 +20,20 @@ export const main = (): void => {
   const ul: HTMLUListElement = document.createElement("ul");
   const video: HTMLVideoElement = document.createElement("video");
   const src: HTMLSourceElement = document.createElement("source");
-  const cover:HTMLDivElement = document.createElement('div')
-  cover.setAttribute('class','cover')
-  body.appendChild(cover)
+  const cover: HTMLDivElement = document.createElement("div");
+  const h4: HTMLHeadingElement = document.createElement("h4");
+  const logout: HTMLButtonElement = imgButton(
+    "https://res.cloudinary.com/di0zpa5yw/image/upload/v1675277789/gamesHub/cerrar-sesion_npnjo3.png",
+    "mainLogOut"
+  );
+  logout.setAttribute('id','logOutMainButton')
+  const divLog: HTMLDivElement = document.createElement("div");
+  const divNoLog: HTMLDivElement = document.createElement("div");
+  divLog.setAttribute("class", "divLog");
+  divNoLog.setAttribute("class", "divLog");
+  const user: string = localStorage.getItem("user") as string;
+  cover.setAttribute("class", "cover");
+  body.appendChild(cover);
   src.setAttribute(
     "src",
     "https://res.cloudinary.com/di0zpa5yw/video/upload/v1675239845/gamesHub/Millennium_falcon_hyperdrive_effect_tukotn.mp4"
@@ -47,7 +58,23 @@ export const main = (): void => {
   body.appendChild(video);
   div.appendChild(h1);
   div.appendChild(h3);
-  div.appendChild(mainInput());
+  divLog.appendChild(mainInput());
+  div.appendChild(divLog);
+  h4.innerHTML = `Bienvenido ${user}!`;
+  divNoLog.appendChild(h4);
+  divNoLog.appendChild(logout);
+  div.appendChild(divNoLog);
+  logout.addEventListener("click", () => {
+    divNoLog.classList.add('mainNone')
+    divLog.classList.remove('mainNone')
+  });
+  if (user === null) {
+    divNoLog.classList.add('mainNone')
+  }
+  if (user !== null) {
+    divLog.classList.add('mainNone')
+  }
+
   div.appendChild(mainButton());
   main.appendChild(div);
   ul.appendChild(

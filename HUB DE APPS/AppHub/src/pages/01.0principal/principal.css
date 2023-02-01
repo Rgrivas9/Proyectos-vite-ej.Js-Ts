@@ -1,0 +1,33 @@
+.principalB {
+  background: white;
+  color: black;
+}
+.principalB img {
+  width: 40px;
+  height: 40px;
+}
+.principalB nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.principalB section {
+  display: grid;
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: repeat(6, 500px);
+}
+.principalB figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.principalB figure div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.principalB figure a img {
+  width: 300px;
+  height: 300px;
+}
