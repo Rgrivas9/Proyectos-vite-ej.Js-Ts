@@ -10,11 +10,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background: white;
 }
 .principalB section {
   display: grid;
   grid-template-columns: repeat(3, 300px);
   grid-template-rows: repeat(6, 500px);
+  background: white;
 }
 .principalB figure {
   display: flex;

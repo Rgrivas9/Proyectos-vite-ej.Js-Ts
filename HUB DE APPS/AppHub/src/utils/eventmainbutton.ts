@@ -28,10 +28,10 @@ export const eventMainButton = (): void => {
     btnSwitch.setAttribute("disabled", "true");
     localStorage.setItem("user", input.value);
     const cover=document.querySelector<HTMLDivElement>('.cover') as HTMLDivElement
-    setTimeout(()=>{cover.setAttribute('class','coveractive')},5400)
+    setTimeout(()=>{cover.setAttribute('class','coveractive');video.classList.add('opacity')},5400)
     setTimeout(()=>{cover.setAttribute('class','cover')},7400)
     setTimeout(()=>{body.removeChild(header);body.removeChild(main);body.removeChild(footer);principal()},6400)
-    setTimeout(()=>{body.removeChild(video);body.removeChild(cover)},8500)
+    setTimeout(()=>{body.removeChild(video);body.removeChild(cover)},10000)
   } else {
     alert("Debes introducir un nombre!!");
   }
