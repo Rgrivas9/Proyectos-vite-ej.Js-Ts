@@ -6,9 +6,11 @@ export const mainButton = (): HTMLButtonElement => {
   btn.setAttribute("id", "mainbutton");
   btn.addEventListener("click", () => {
     const video = document.querySelector<HTMLVideoElement>('#videoFalcon') as HTMLVideoElement
+    const main = document.querySelector<HTMLElement>('main') as HTMLElement
     video.removeAttribute('class')
     video.setAttribute("class", "videoFalcon");
     video.setAttribute('muted','false')
+    main.setAttribute('class','nobackground')
     video.play()
   });
   return btn;

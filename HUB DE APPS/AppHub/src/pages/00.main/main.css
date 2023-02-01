@@ -39,11 +39,14 @@ main {
   border-top-right-radius: 105px;
   border-top: 15px solid var(--main1);
   border-right: 15px solid var(--main1);
-  /* background-color: var(--background1); */
+  background-color: var(--background1);
   background-image: url(https://res.cloudinary.com/di0zpa5yw/image/upload/v1675242204/gamesHub/aaa_rx6gak.png);
   background-size: cover;
   background-position-x: center;
   background-position-y: 87%;
+}
+.nobackground {
+    background-color: rgba(0, 0, 0, 0)
 }
 .videoFalcon {
   position: fixed;
