@@ -40,7 +40,22 @@ main {
   border-top-right-radius: 105px;
   border-top: 15px solid var(--main1);
   border-right: 15px solid var(--main1);
-  background-color: var(--background1);
+  /* background-color: var(--background1); */
+  background-image: url(https://res.cloudinary.com/di0zpa5yw/image/upload/v1675242204/gamesHub/aaa_rx6gak.png);
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: 87%;
+
+}
+.videoFalcon {
+    position: fixed;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+}
+.hidden {
+    display: none;
 }
 main div {
   height: 100%;
