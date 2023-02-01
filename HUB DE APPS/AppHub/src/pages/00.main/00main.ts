@@ -20,6 +20,9 @@ export const main = (): void => {
   const ul: HTMLUListElement = document.createElement("ul");
   const video: HTMLVideoElement = document.createElement("video");
   const src: HTMLSourceElement = document.createElement("source");
+  const cover:HTMLDivElement = document.createElement('div')
+  cover.setAttribute('class','cover')
+  body.appendChild(cover)
   src.setAttribute(
     "src",
     "https://res.cloudinary.com/di0zpa5yw/video/upload/v1675239845/gamesHub/Millennium_falcon_hyperdrive_effect_tukotn.mp4"

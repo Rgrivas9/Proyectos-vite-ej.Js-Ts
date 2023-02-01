@@ -9,6 +9,7 @@ export const switchButton = (clas: string, img: string): HTMLButtonElement => {
   btn.appendChild(image);
   btn.addEventListener("click", () => {
     const n: number = randomNumber();
+    localStorage.setItem("colour", n.toString());
     switchColor(n,'body');
     switchColor(n,'header');
     switchColor(n,'main');
