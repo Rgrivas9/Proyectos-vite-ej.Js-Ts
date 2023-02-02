@@ -73,7 +73,7 @@ const getHability = async (url: string): Promise<any> => {
 /* ------------------------------------------------------------------------------------------------ */
 export const character = async (n:number) => {
   const char = await getCharacter(n); /* pokemon completo */
-  const firstThreeMoves = char.moves.splice(0, 3);
+  const firstThreeMoves = char.moves.splice(0, 5);
   const urlList: string[] = []; /* ------------------LISTA DE URLS DE 3 PRIMEROS MOVIENTOS */
   const moveList: string[] = [];
   for (const move of firstThreeMoves) {

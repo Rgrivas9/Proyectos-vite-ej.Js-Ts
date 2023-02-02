@@ -1,29 +1,43 @@
 export const num: number = 0;
+import { character } from "../../utils/getChar";
 interface Stats {
   name: string;
   base: number;
 }
-interface Hability {
+export interface Hability {
   name: string;
   description: string;
 }
-interface Moves {
+export interface Moves {
   name: string;
   type: string;
+  accuracy: any;
 }
-interface Images {
-    front:string;
-    back:string;
-    main:string;
+export interface Images {
+  front: string;
+  back: string;
+  main: string;
+  shiny: string;
 }
-interface Pokemon {
+export interface Pokemon {
   name: string;
   id: number;
   height: number;
   weight: number;
-  stats: Stats;
+  stats: Stats[];
   type: string[];
-  habilities: Hability;
-  moves: Moves;
-  images: Images
+  habilities: Hability[];
+  moves: Moves[];
+  images: Images;
 }
+
+export const getPokemons = async () => {
+  let n: number = 0;
+  const pokemonList: Pokemon[] = [] as Pokemon[];
+  while (n < 151) {
+    n++;
+    const pokemon: Pokemon = await character(n);
+    pokemonList.push(pokemon);
+  }
+  return pokemonList;
+};
