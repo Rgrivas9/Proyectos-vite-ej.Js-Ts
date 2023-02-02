@@ -4,16 +4,12 @@ import { switchButton } from "../../components/switchTheme";
 import "./principal.css";
 import "../../styles/switch.css";
 import { switchPrincipal } from "../../components/switchPrincipal";
-import { main } from "../00.main/00main";
 
 export const principal = (): void => {
-  window.onbeforeunload = function (evt) {
-    var message = "Are you sure you want to leave?";
-    if (evt) {
-      evt.returnValue = message;
-    }
-    return message;
-  };
+  const location:string[]=(window.location.href).split('/')
+  location.pop()
+  const baseURL:string=location.join('/')
+  console.log(baseURL)
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;
@@ -32,7 +28,7 @@ export const principal = (): void => {
     1
   );
   logOut.addEventListener('click',()=>{
-    if (window.confirm("¿Seguro que quieres salir? Es posible que los cambios no se guarden")) {main()}
+    if (window.confirm("¿Seguro que quieres salir? Es posible que los cambios no se guarden")) {window.location.href = baseURL}
   })
   const n: string = localStorage.getItem("colour") as string;
   body.setAttribute('class',`principalB${n}`)

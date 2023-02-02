@@ -79,7 +79,6 @@ export const main = (): void => {
   if (user !== null) {
     divLog.classList.add('mainNone')
   }
-
   div.appendChild(mainButton());
   main.appendChild(div);
   ul.appendChild(

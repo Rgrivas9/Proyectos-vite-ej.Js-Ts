@@ -7,10 +7,12 @@ export const mainButton = (): HTMLButtonElement => {
   btn.appendChild(h3);
   btn.setAttribute("id", "mainbutton");
   btn.addEventListener("click", () => {
-    eventMainButton()
+    eventMainButton();
   });
   document.addEventListener("keydown", (ev) => {
-    if (ev.which===13){eventMainButton()}
+    if (ev.which === 13) {
+      eventMainButton();
+    }
   });
   return btn;
 };

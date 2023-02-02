@@ -6,6 +6,7 @@ export const gameFigure=(image:string,game:string,scored='0000'):HTMLElement=>{
     const img:HTMLImageElement=document.createElement('img')
     img.setAttribute('src',image)
     a.appendChild(img)
+    a.setAttribute('href',game)
     const div:HTMLDivElement=document.createElement('div')
     const div2:HTMLDivElement=document.createElement('div')
     div.setAttribute('class','scoreDiv')
