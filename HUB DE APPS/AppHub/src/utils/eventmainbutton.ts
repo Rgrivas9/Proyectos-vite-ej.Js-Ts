@@ -57,7 +57,7 @@ export const eventMainButton = (): void => {
     }, 10000);
     setTimeout(() => {
       const anchor:HTMLAnchorElement=document.createElement('a');
-      anchor.setAttribute('href','principal')
+      anchor.setAttribute('href','#principal')
       anchor.click()
     }, 10050);
   } else {

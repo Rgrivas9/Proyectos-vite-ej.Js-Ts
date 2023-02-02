@@ -13,7 +13,7 @@ console.log(location);
 if (location === "") {
   main();
 }
-if (location === "principal") {
+if (location === "#principal") {
   principal();
 }
 if (location === "Pokemon") {
