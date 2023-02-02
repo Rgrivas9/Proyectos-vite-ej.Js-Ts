@@ -6,14 +6,18 @@ import { mainInput } from "../../components/mainInput";
 import { mediaAnchor } from "../../components/mediaAnchor";
 import "./main.css";
 import { imgButton } from "../../components/imgButton";
+import { switchColor } from "../../utils/switch";
 
 export const main = (): void => {
-  const header = document.querySelector<HTMLElement>("header") as HTMLElement;
-  const main = document.querySelector<HTMLElement>("main") as HTMLElement;
-  const footer = document.querySelector<HTMLElement>("footer") as HTMLElement;
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;
+  body.innerHTML=`<header></header><main></main><footer></footer>`
+  body.removeAttribute('class')
+  body.removeAttribute('id')
+  const header = document.querySelector<HTMLElement>("header") as HTMLElement;
+  const main = document.querySelector<HTMLElement>("main") as HTMLElement;
+  const footer = document.querySelector<HTMLElement>("footer") as HTMLElement;
   const h1: HTMLHeadingElement = document.createElement("h1");
   const h3: HTMLHeadingElement = document.createElement("h3");
   const div: HTMLDivElement = document.createElement("div");
@@ -44,6 +48,7 @@ export const main = (): void => {
   video.setAttribute("id", "videoFalcon");
   video.setAttribute("class", "hidden");
   video.appendChild(src);
+  video.pause()
   clean(header);
   clean(main);
   clean(footer);
@@ -93,4 +98,14 @@ export const main = (): void => {
     )
   );
   footer.appendChild(ul);
+  const n: string = localStorage.getItem("colour") as string;
+  if (n!=='null'){
+    const num:number=parseInt(n)
+    switchColor(num,'body');
+    switchColor(num,'header');
+    switchColor(num,'main');
+    switchColor(num,'input');
+    switchColor(num,'#mainbutton');
+    switchColor(num,'footer');
+  }
 };

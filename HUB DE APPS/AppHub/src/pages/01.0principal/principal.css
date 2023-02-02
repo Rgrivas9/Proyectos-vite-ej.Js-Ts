@@ -1,35 +1,143 @@
-.principalB {
-  background: white;
-  color: black;
+@font-face {
+  font-family: "arcade";
+  src: url(../../../ka1.ttf);
 }
-.principalB img {
+*::-webkit-scrollbar {
+  width: 0;
+}
+#principalB img {
   width: 40px;
   height: 40px;
 }
-.principalB nav {
+#principalB nav {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background: white;
+  padding: 15px 30px;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  letter-spacing: 3px;
 }
-.principalB section {
+#principalB nav h1 {
+  font-family: "arcade";
+  text-align: center;
+}
+#principalB nav button {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  filter: invert(100);
+}
+#principalB section {
+  margin-top: 80px;
   display: grid;
-  grid-template-columns: repeat(3, 300px);
-  grid-template-rows: repeat(6, 500px);
-  background: white;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
 }
-.principalB figure {
+#principalB figure {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 15px;
+  margin: 10px;
+  gap: 10px;
 }
-.principalB figure div {
+.principalSwitchTheme img:hover{
+  filter: invert(100)
+}
+.logOutButton img:hover {
+  background-color: rgb(187, 17, 122);
+  filter: brightness(150%);
+}
+
+#principalB figure button {
+  background-color: rgba(240, 248, 255, 0);
+}
+#principalB figure h2 {
+  background-color: rgba(240, 248, 255, 0.562);
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+#principalB figure .scoreDiv button {
+  background-color: rgb(88, 78, 19);
+  padding: 2px;
+  border-radius: 5px;
+  color: rgb(8, 2, 2);
+}
+#principalB .infoButton:hover {
+  filter: invert(100);
+}
+#principalB figure .scoreDiv button:hover {
+  color: rgb(139, 16, 16);
+}
+#principalB figure .scoreDiv {
+  background-color: gold;
+  padding: 2px 5px;
+  border-radius: 2px;
+}
+#principalB h2 {
+  font-family: "arcade";
+}
+#principalB .infodiv {
+  width: 300px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+#principalB .infodiv img {
+  width: 25px;
+  height: 25px;
+}
+#principalB figure div {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 1rem;
 }
-.principalB figure a img {
-  width: 300px;
-  height: 300px;
+#principalB figure a img {
+  width: 290px;
+  height: 290px;
+}
+#principalB figure a img:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  filter: brightness(140%);
+}
+#principalB figure h4 {
+  font-family: "arcade";
+}
+#principalB figure button {
+  font-family: "arcade";
+  border: none;
+}
+@media screen and (max-width: 1000px) {
+  #principalB section {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  #principalB figure a img {
+    width: 250px;
+    height: 250px;
+  }
+  #principalB .infodiv {
+    width: 250px;
+  }
+  #principalB .infodiv img {
+    width: 22px;
+    height: 22px;
+  }
+}
+@media screen and (max-width: 450px) {
+  #principalB section {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  #principalB figure a img {
+    width: 100px;
+    height: 100px;
+  }
+  #principalB .infodiv {
+    width: 100px;
+  }
+  #principalB .infodiv img {
+    width: 15px;
+    height: 15px;
+  }
 }

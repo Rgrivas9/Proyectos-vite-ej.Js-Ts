@@ -227,3 +227,103 @@
 .footer9 {
   background-color: var(--principal9);
 }
+/* ------------------------------------------------------------------------- */
+.principalB1 {
+  color: var(--highlight1);
+}
+.principalB2 {
+  color: var(--highlight2);
+}
+.principalB3 {
+  color: var(--highlight3);
+}
+.principalB4 {
+  color: var(--highlight4);
+}
+.principalB5 {
+  color: var(--highlight5);
+}
+.principalB6 {
+  color: var(--highlight6);
+}
+.principalB7 {
+  color: var(--highlight7);
+}
+.principalB8 {
+  color: var(--highlight8);
+}
+.principalB9 {
+  color: var(--highlight9);
+}
+.principalNav1 {
+  background-color: var(--main1);
+  border-bottom: 10px solid var(--principal1);
+}
+.principalNav2 {
+  background-color: var(--main2);
+  border-bottom: 10px solid var(--principal2);
+}
+.principalNav3 {
+  background-color: var(--main3);
+  border-bottom: 10px solid var(--principal3);
+}
+.principalNav4 {
+  background-color: var(--main4);
+  border-bottom: 10px solid var(--principal4);
+}
+.principalNav5 {
+  background-color: var(--main5);
+  border-bottom: 10px solid var(--principal5);
+}
+.principalNav6 {
+  background-color: var(--main6);
+  border-bottom: 10px solid var(--principal6);
+}
+.principalNav7 {
+  background-color: var(--main7);
+  border-bottom: 10px solid var(--principal7);
+}
+.principalNav8 {
+  background-color: var(--main8);
+  border-bottom: 10px solid var(--principal8);
+}
+.principalNav9 {
+  background-color: var(--main9);
+  border-bottom: 10px solid var(--principal9);
+}
+.principalSection1 {
+  background-color: var(--secundary1);
+  border-bottom: 20px solid var(--highlight1);
+}
+.principalSection2 {
+  background-color: var(--secundary2);
+  border-bottom: 20px solid var(--highlight2);
+}
+.principalSection3 {
+  background-color: var(--secundary3);
+  border-bottom: 20px solid var(--highlight3);
+}
+.principalSection4 {
+  background-color: var(--secundary4);
+  border-bottom: 20px solid var(--highlight4);
+}
+.principalSection5 {
+  background-color: var(--secundary5);
+  border-bottom: 20px solid var(--highlight5);
+}
+.principalSection6 {
+  background-color: var(--secundary6);
+  border-bottom: 20px solid var(--highlight6);
+}
+.principalSection7 {
+  background-color: var(--secundary7);
+  border-bottom: 20px solid var(--highlight7);
+}
+.principalSection8 {
+  background-color: var(--secundary8);
+  border-bottom: 20px solid var(--highlight8);
+}
+.principalSection9 {
+  background-color: var(--secundary9);
+  border-bottom: 20px solid var(--highlight9);
+}

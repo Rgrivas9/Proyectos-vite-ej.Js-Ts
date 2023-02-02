@@ -5,6 +5,7 @@
 * {
     font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
     font-size: 16px;
+    scroll-behavior: smooth;
 }
 .firstTheme {
     background-color: var(--background1);
