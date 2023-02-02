@@ -56,7 +56,7 @@ export const eventMainButton = (): void => {
       body.removeChild(cover);
     }, 10000);
     setTimeout(() => {
-      window.location.href = "http://localhost:5173/principal";
+      window.location.href = window.location.href+="/principal";
     }, 10050);
   } else {
     alert("Debes introducir un nombre!!");
