@@ -56,7 +56,9 @@ export const eventMainButton = (): void => {
       body.removeChild(cover);
     }, 10000);
     setTimeout(() => {
-      window.location.href = window.location.href+="/principal";
+      const anchor:HTMLAnchorElement=document.createElement('a');
+      anchor.setAttribute('href','principal')
+      anchor.click()
     }, 10050);
   } else {
     alert("Debes introducir un nombre!!");
