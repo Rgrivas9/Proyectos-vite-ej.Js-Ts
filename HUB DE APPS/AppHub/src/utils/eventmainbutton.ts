@@ -55,11 +55,11 @@ export const eventMainButton = (): void => {
       body.removeChild(video);
       body.removeChild(cover);
     }, 10000);
-    setTimeout(() => {
+  /*   setTimeout(() => {
       const anchor:HTMLAnchorElement=document.createElement('a');
       anchor.setAttribute('href','#principal')
       anchor.click()
-    }, 10050);
+    }, 10050); */
   } else {
     alert("Debes introducir un nombre!!");
   }
