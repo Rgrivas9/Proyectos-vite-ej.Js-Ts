@@ -12,7 +12,7 @@ export const main = (): void => {
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;
-  body.innerHTML=`<header></header><main></main><footer></footer>`
+  body.innerHTML=`<span id="Pokemon"></span><header></header><main></main><footer></footer>`
   body.removeAttribute('class')
   body.removeAttribute('id')
   const header = document.querySelector<HTMLElement>("header") as HTMLElement;
