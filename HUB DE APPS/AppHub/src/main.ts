@@ -16,7 +16,7 @@ if (location === "") {
 if (location === "#principal") {
   principal();
 }
-if (location === "Pokemon") {
+if (window.location.href === "https://duel-of-the-games-jxdf3tvfz-rgrivas9.vercel.app/pokemon") {
   pokeapi();
 }
 if (location === "Ahorcado") {
