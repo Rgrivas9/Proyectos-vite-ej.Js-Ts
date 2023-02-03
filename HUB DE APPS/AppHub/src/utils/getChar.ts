@@ -141,5 +141,6 @@ export const character = async (n:number) => {
       shiny: char.sprites.other.home.front_default,
     },
   };
+  if (pokemon.type[0]=='ground' && pokemon.type[1]=='rock'){pokemon.type=pokemon.type.reverse()}
   return pokemon
 };

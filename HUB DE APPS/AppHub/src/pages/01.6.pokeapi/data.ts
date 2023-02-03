@@ -31,7 +31,7 @@ export interface Pokemon {
   images: Images;
 }
 
-export const getPokemons = async () => {
+const getPokemons = async () => {
   let n: number = 0;
   const pokemonList: Pokemon[] = [] as Pokemon[];
   while (n < 151) {
@@ -41,3 +41,4 @@ export const getPokemons = async () => {
   }
   return pokemonList;
 };
+export const pokemonList:Pokemon[]=await getPokemons()
