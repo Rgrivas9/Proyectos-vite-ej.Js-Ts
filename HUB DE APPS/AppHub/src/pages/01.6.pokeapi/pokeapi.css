@@ -1,0 +1,19 @@
+.noShiny {
+    display: none;
+}
+.Pokemon {
+    background-image: url('https://res.cloudinary.com/di0zpa5yw/image/upload/v1675434320/gamesHub/pokooo_w0txvx.png');
+    background-color: rgba(0, 0, 0, 0);
+    background-size: contain;
+}
+.Pokemon .pokeSection img {
+    width: 300px;
+}
+.Pokemon .pokeSection {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+}
+.Pokemon .pokeSection figure {
+    margin: 1rem;
+    background-color: rgba(0, 0, 0, 0.329);
+}

@@ -138,7 +138,7 @@ export const character = async (n:number) => {
       front: char.sprites.front_default,
       back: char.sprites.back_default,
       main: char.sprites.other.home.front_default,
-      shiny: char.sprites.other.home.front_default,
+      shiny: char.sprites.other.home.front_shiny,
     },
   };
   if (pokemon.type[0]=='ground' && pokemon.type[1]=='rock'){pokemon.type=pokemon.type.reverse()}

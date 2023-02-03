@@ -1,10 +1,13 @@
 //import { Pokemon, pokemonList } from "./data";
 //import { typeSelect } from "../../components/typeSelect";
+import { figurePokemon } from "../../components/figurePokemon";
+import { pokemonList } from "./data";
 import "./pokeapi.css";
 export const pokeapi = () => {
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;
+  body.setAttribute('class','Pokemon')
   const nav: HTMLElement = document.createElement("nav");
   const navDiv1: HTMLDivElement = document.createElement("div");
   const navDiv1h3: HTMLHeadingElement = document.createElement("h3");
@@ -58,6 +61,10 @@ export const pokeapi = () => {
   div.appendChild(divDiv3);
 
   const nav2: HTMLElement = document.createElement("nav");
+  const nav2div0: HTMLDivElement = document.createElement("div");
+  const nav2div0h4: HTMLHeadingElement = document.createElement("h4");
+  nav2div0h4.innerHTML = "Name";
+  const nav2div0Input: HTMLInputElement = document.createElement("input");
   const nav2div1: HTMLDivElement = document.createElement("div");
   const nav2div1h4: HTMLHeadingElement = document.createElement("h4");
   nav2div1h4.innerHTML = "Type";
@@ -70,21 +77,26 @@ export const pokeapi = () => {
   sortId.innerHTML = "Id";
   const sortName: HTMLOptionElement = document.createElement("option");
   sortName.innerHTML = "Name";
-
+  nav2div0.appendChild(nav2div0h4);
+  nav2div0.appendChild(nav2div0Input);
   nav2div1.appendChild(nav2div1h4);
   //nav2div1.appendChild(nav2div1select);
   nav2div2.appendChild(nav2div2h4);
   nav2div2select.appendChild(sortId);
   nav2div2select.appendChild(sortName);
   nav2div2.appendChild(nav2div2select);
+  nav2.appendChild(nav2div0);
   nav2.appendChild(nav2div1);
   nav2.appendChild(nav2div2);
 
   const section: HTMLElement = document.createElement("section");
-
+  section.setAttribute('class','pokeSection')
+  for (const pokemon of pokemonList) {
+    const fig: HTMLElement = figurePokemon(pokemon);
+    section.appendChild(fig);
+  }
   body.appendChild(nav);
   body.appendChild(div);
   body.appendChild(nav2);
   body.appendChild(section);
-  
 };
