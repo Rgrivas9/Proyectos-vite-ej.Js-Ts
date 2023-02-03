@@ -1,19 +1,302 @@
+@font-face {
+  font-family: "pokemon";
+  src: url(../../../PokemonClassic.ttf);
+}
+.nav1Poke button {
+  background-color: rgba(0, 0, 0, 0.418);
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.918);
+}
 .noShiny {
-    display: none;
+  opacity: 0;
+  position: relative;
+  top: -304px;
+}
+.nav1Poke h3{
+    font-size: 18px;
+}
+.Pokemon nav {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(56, 153, 248);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 153, 248, 1) 0%,
+    rgba(9, 27, 54, 1) 51%,
+    rgba(176, 88, 160, 1) 100%
+  );
+  padding: 1rem 2rem;
+}
+.Pokemon nav img {
+  width: 40px;
+}
+.Pokemon .divHeader {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.829);
+  height: 200px;
+}
+.vs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vs button {
+  font-family: "arcade";
+  color: gold;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  font-size: 30px;
+}
+.exitPK {
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  filter: invert(100);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.exitPK:hover {
+  background-color: rgb(204, 15, 179);
+}
+.htpPK {
+  font-size: 10.5px;
+  background-color: rgba(255, 255, 255, 0.815);
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  color: rgb(34, 20, 20);
+}
+.Pokemon .youPokemon {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+.Pokemon .opPokemon {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 1rem;
+}
+.Pokemon .youPokemon figure {
+  margin-top: 1rem;
+  width: 350px;
+  height: 150px;
+  background: rgba(56, 152, 248, 0.37);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 152, 248, 0.322) 0%,
+    rgba(30, 141, 43, 0.438) 28%,
+    rgba(9, 27, 54, 0.301) 51%,
+    rgba(108, 58, 58, 0.288) 76%,
+    rgba(176, 88, 160, 0.281) 100%
+  );
+}
+.Pokemon .opPokemon figure {
+  margin-top: 1rem;
+  width: 350px;
+  height: 150px;
+  background: rgba(56, 152, 248, 0.37);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 152, 248, 0.322) 0%,
+    rgba(30, 141, 43, 0.438) 28%,
+    rgba(9, 27, 54, 0.301) 51%,
+    rgba(108, 58, 58, 0.288) 76%,
+    rgba(176, 88, 160, 0.281) 100%
+  );
+}
+.searchPKtype {
+  width: 250px;
+  font-family: "pokemon";
+  background: rgb(56, 153, 248);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 153, 248, 1) 0%,
+    rgba(30, 141, 43, 1) 28%,
+    rgba(9, 27, 54, 1) 51%,
+    rgba(108, 58, 58, 1) 76%,
+    rgba(176, 88, 160, 1) 100%
+  );
+  margin-top: 0.4rem;
+  margin-right: 5vw;
+}
+.searchPKid {
+  width: 100px;
+  font-family: "pokemon";
+  background: rgb(56, 153, 248);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 153, 248, 1) 0%,
+    rgba(30, 141, 43, 1) 28%,
+    rgba(9, 27, 54, 1) 51%,
+    rgba(108, 58, 58, 1) 76%,
+    rgba(176, 88, 160, 1) 100%
+  );
+  margin-top: 0.4rem;
+}
+.nav2Poke input {
+  background: rgb(56, 153, 248);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 153, 248, 1) 0%,
+    rgba(30, 141, 43, 1) 28%,
+    rgba(9, 27, 54, 1) 51%,
+    rgba(108, 58, 58, 1) 76%,
+    rgba(176, 88, 160, 1) 100%
+  );
+  font-family: "pokemon";
+  margin-top: 0.4rem;
+  width: 300px;
+}
+.nav1Poke div {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.nav1Poke h2 {
+  display: flex;
+  align-items: center;
+}
+.nav1Poke div button {
+  height: 70%;
+  width: 5rem;
+  font-family: "arcade";
 }
 .Pokemon {
-    background-image: url('https://res.cloudinary.com/di0zpa5yw/image/upload/v1675434320/gamesHub/pokooo_w0txvx.png');
-    background-color: rgba(0, 0, 0, 0);
-    background-size: contain;
-}
-.Pokemon .pokeSection img {
-    width: 300px;
+  background-image: url("https://res.cloudinary.com/di0zpa5yw/image/upload/v1675434320/gamesHub/pokooo_w0txvx.png");
+  background-color: rgba(0, 0, 0, 0);
+  background-size: contain;
+  font-family: "pokemon";
 }
 .Pokemon .pokeSection {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+}
+.Pokemon .pokeSection img {
+  width: 300px;
+}
+.pokeSection .HWdiv {
+  display: flex;
+  justify-content: space-between;
+  padding: 1% 2%;
+  position: relative;
+  top: -304px;
 }
 .Pokemon .pokeSection figure {
-    margin: 1rem;
-    background-color: rgba(0, 0, 0, 0.329);
+  margin: 1rem;
+  max-width: 720px;
+  height: 420px;
+}
+.pokeSection section {
+  height: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15%;
+  padding-right: 65px;
+  background-color: rgba(151, 7, 7, 0.185);
+}
+.pokeSection section h3 {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.788);
+}
+.pokeSection section h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+  font-size: 21px;
+  padding-right: 25px;
+  text-shadow: 1px 1px 1px rgba(15, 10, 2, 0.788);
+}
+.pokeSection .mainDivPK {
+  height: 90%;
+  margin: 2% 0;
+  gap: 1%;
+  display: flex;
+  color: rgb(31, 18, 3);
+  text-shadow: 1px 1px 1px rgba(88, 83, 74, 0.788);
+}
+.pokeSection .imgDivPK {
+  width: 40%;
+}
+.pokeSection .statsDivPK {
+  width: 65%;
+  position: relative;
+  bottom: 14px;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.438);
+}
+.pokeSection .ulstatsDiv {
+  display: flex;
+}
+.pokeSection .ulstatsDiv ul li {
+  font-size: 10px;
+  letter-spacing: -0.5px;
+  text-transform: capitalize;
+  line-height: 30px;
+  padding-left: 5px;
+}
+.pokeSection .statsDivPK h4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2% 0;
+  padding-top: 10px;
+}
+.pokeSection .habdivPK {
+  display: flex;
+  justify-content: space-around;
+  padding-left: 10px;
+}
+.statsUl {
+  width: 40%;
+}
+.pokeSection .habdivPK div {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  align-items: center;
+}
+.pokeSection .ulstatsDiv .movesUl li {
+  font-size: 10px;
+  padding-bottom: 2px;
+  width: 110%;
+  padding-right: 30px;
+}
+.pokeSection p {
+  text-align: left;
+  width: 180px;
+  height: 200px;
+  font-size: 14px;
+  position: absolute;
+  display: none;
+  color: rgb(182, 54, 54);
+  background-color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  overflow: scroll;
+}
+.pokeSection .habdivPK div:hover p {
+  display: flex;
+}
+.Pokemon .pokeSection figure:hover .shiny {
+  opacity: 0;
+}
+.Pokemon .pokeSection figure:hover .noShiny {
+  opacity: 100;
 }

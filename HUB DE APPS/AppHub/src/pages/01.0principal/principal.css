@@ -10,7 +10,7 @@
     top: 0
   }
 }
-*::-webkit-scrollbar {
+#principalB::-webkit-scrollbar {
   width: 0;
 }
 #principalB img {
@@ -42,6 +42,7 @@
 }
 #principalB section {
   margin-top: 80px;
+  height: 92vh;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
 }

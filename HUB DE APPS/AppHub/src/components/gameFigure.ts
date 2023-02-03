@@ -1,12 +1,15 @@
 import { imgButton } from "./imgButton"
 
-export const gameFigure=(image:string,game:string,scored='0000'):HTMLElement=>{
+export const gameFigure=(image:string,game:string,page:Function,scored='0000'):HTMLElement=>{
     const figure:HTMLElement=document.createElement('figure')
     const a:HTMLAnchorElement=document.createElement('a')
     const img:HTMLImageElement=document.createElement('img')
+    const body=document.querySelector<HTMLBodyElement>('body') as HTMLBodyElement
     img.setAttribute('src',image)
     a.appendChild(img)
-    a.setAttribute('href',game)
+    a.addEventListener('click',()=>{
+        body.innerHTML=''
+        page()})
     const div:HTMLDivElement=document.createElement('div')
     const div2:HTMLDivElement=document.createElement('div')
     div.setAttribute('class','scoreDiv')

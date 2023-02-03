@@ -1,6 +1,6 @@
 
 
-export const ahorcado = ():void=>{
+export const Ahorcado = ():void=>{
     const body = document.querySelector<HTMLBodyElement>('body') as HTMLBodyElement
     const nav:HTMLElement=document.createElement('nav')
     const h1:HTMLHeadingElement=document.createElement('h1')

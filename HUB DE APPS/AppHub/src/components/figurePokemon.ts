@@ -2,10 +2,13 @@ import { Pokemon } from "../pages/01.6.pokeapi/data";
 
 export const figurePokemon = (pokemon: Pokemon): HTMLElement => {
   const figure: HTMLElement = document.createElement("figure");
+  pokemon.type.length == 2
+    ? figure.setAttribute("class", pokemon.type.join(""))
+    : figure.setAttribute("class", pokemon.type[0]);
 
   const section: HTMLElement = document.createElement("section");
   const id: HTMLHeadingElement = document.createElement("h3");
-  id.innerHTML = `${pokemon.id}`;
+  id.innerHTML = `n:${pokemon.id}`;
   const name: HTMLHeadingElement = document.createElement("h2");
   name.innerHTML = pokemon.name;
   const typed: HTMLHeadingElement =
@@ -74,7 +77,12 @@ export const figurePokemon = (pokemon: Pokemon): HTMLElement => {
   ulStats.appendChild(h4stats);
   for (const stat of pokemon.stats) {
     const li: HTMLLIElement = document.createElement("li");
-    li.innerHTML = `${stat.name}: ${stat.base}`;
+    stat.name == "special-attack"
+      ? (li.innerHTML = `s-attack: ${stat.base}`)
+      : stat.name == "special-defense"
+      ? (li.innerHTML = `s-defense: ${stat.base}`)
+      : (li.innerHTML = `${stat.name}: ${stat.base}`);
+
     ulStats.appendChild(li);
   }
   divStats.appendChild(ulStats);
