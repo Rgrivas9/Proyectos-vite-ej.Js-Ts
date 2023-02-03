@@ -124,7 +124,9 @@ export const pokeapi = () => {
   body.appendChild(div);
   body.appendChild(nav2);
   body.appendChild(section);
-
+  localStorage.setItem('namefilter',"")
+  localStorage.setItem('typefilter','All')
+  localStorage.setItem('sortPokemon','Id')
   nav2div0Input.addEventListener("input", () => {
     localStorage.setItem('namefilter',nav2div0Input.value)
     section.innerHTML = "";
