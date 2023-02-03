@@ -7,6 +7,11 @@
   border-radius: 5px;
   color: rgba(255, 255, 255, 0.918);
 }
+.nav1Poke button:hover {
+  filter: brightness(190%);
+  background-color: rgb(44, 44, 155);
+
+}
 .noShiny {
   opacity: 0;
   position: relative;
@@ -225,8 +230,8 @@
   margin: 2% 0;
   gap: 1%;
   display: flex;
-  color: rgb(31, 18, 3);
-  text-shadow: 1px 1px 1px rgba(88, 83, 74, 0.788);
+  color: rgb(14, 8, 1);
+  text-shadow: 1px 1px 1px rgba(119, 116, 110, 0.788);
 }
 .pokeSection .imgDivPK {
   width: 40%;

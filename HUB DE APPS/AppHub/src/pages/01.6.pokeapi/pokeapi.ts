@@ -4,15 +4,20 @@ import { figurePokemon } from "../../components/figurePokemon";
 import { principal } from "../01.0principal/principal";
 import { pokemonList } from "./data";
 import "./pokeapi.css";
-import "./gradientesPK.css"
+import "./gradientesPK.css";
+import {
+  filterPokemonsName,
+  filterPokemonsType,
+} from "../../utils/filterPokemons";
+import { sortPokemons } from "../../utils/sortPokemons";
 export const pokeapi = () => {
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;
-  body.removeAttribute('id')
-  body.setAttribute('class','Pokemon')
+  body.removeAttribute("id");
+  body.setAttribute("class", "Pokemon");
   const nav: HTMLElement = document.createElement("nav");
-  nav.setAttribute('class','nav1Poke')
+  nav.setAttribute("class", "nav1Poke");
   const navDiv1: HTMLDivElement = document.createElement("div");
   const navDiv1h3: HTMLHeadingElement = document.createElement("h3");
   navDiv1h3.innerHTML = "Difficulty";
@@ -21,23 +26,23 @@ export const pokeapi = () => {
   const navH2: HTMLHeadingElement = document.createElement("h2");
   navH2.innerHTML = "RECORD: 0000";
   const navDiv2: HTMLDivElement = document.createElement("div");
-  navDiv2.setAttribute('class','navDiv2PK')
+  navDiv2.setAttribute("class", "navDiv2PK");
   const htpBtn: HTMLButtonElement = document.createElement("button");
   htpBtn.innerHTML = "How2Play";
-  htpBtn.setAttribute('class','htpPK')
+  htpBtn.setAttribute("class", "htpPK");
   const returnBtn: HTMLButtonElement = document.createElement("button");
-  returnBtn.setAttribute('class','exitPK')
+  returnBtn.setAttribute("class", "exitPK");
   const exitImg: HTMLImageElement = document.createElement("img");
   exitImg.setAttribute(
     "src",
     "https://res.cloudinary.com/di0zpa5yw/image/upload/v1675264883/gamesHub/salida_bspcsc.png"
   );
-  exitImg.addEventListener('click',()=>{
-    body.removeAttribute('class')
-    body.setAttribute('id','principalB')
-    body.innerHTML=''
-    principal()
-  })
+  exitImg.addEventListener("click", () => {
+    body.removeAttribute("class");
+    body.setAttribute("id", "principalB");
+    body.innerHTML = "";
+    principal();
+  });
   returnBtn.appendChild(exitImg);
   navDiv1.appendChild(navDiv1h3);
   navDiv1.appendChild(difficultyBtn);
@@ -48,13 +53,13 @@ export const pokeapi = () => {
   nav.appendChild(navDiv2);
 
   const div: HTMLDivElement = document.createElement("div");
-  div.setAttribute('class','divHeader')
+  div.setAttribute("class", "divHeader");
   const divDiv1: HTMLDivElement = document.createElement("div");
-  divDiv1.setAttribute('class','youPokemon')
+  divDiv1.setAttribute("class", "youPokemon");
   const divDiv2: HTMLDivElement = document.createElement("div");
-  divDiv2.setAttribute('class','vs')
+  divDiv2.setAttribute("class", "vs");
   const divDiv3: HTMLDivElement = document.createElement("div");
-  divDiv3.setAttribute('class','opPokemon')
+  divDiv3.setAttribute("class", "opPokemon");
   const divDiv1H3: HTMLHeadingElement = document.createElement("h3");
   divDiv1H3.innerHTML = "You";
   const divDiv1Div: HTMLDivElement = document.createElement("div");
@@ -78,7 +83,7 @@ export const pokeapi = () => {
   div.appendChild(divDiv3);
 
   const nav2: HTMLElement = document.createElement("nav");
-  nav2.setAttribute('class','nav2Poke')
+  nav2.setAttribute("class", "nav2Poke");
   const nav2div0: HTMLDivElement = document.createElement("div");
   const nav2div0h4: HTMLHeadingElement = document.createElement("h4");
   nav2div0h4.innerHTML = "Name";
@@ -86,13 +91,13 @@ export const pokeapi = () => {
   const nav2div1: HTMLDivElement = document.createElement("div");
   const nav2div1h4: HTMLHeadingElement = document.createElement("h4");
   nav2div1h4.innerHTML = "Type";
-  const nav2div1select: HTMLSelectElement = typeSelect()
-  nav2div1select.setAttribute('class','searchPKtype')
+  const nav2div1select: HTMLSelectElement = typeSelect();
+  nav2div1select.setAttribute("class", "searchPKtype");
   const nav2div2: HTMLDivElement = document.createElement("div");
   const nav2div2h4: HTMLHeadingElement = document.createElement("h4");
   nav2div2h4.innerHTML = "Sort";
   const nav2div2select: HTMLSelectElement = document.createElement("select");
-  nav2div2select.setAttribute('class','searchPKid')
+  nav2div2select.setAttribute("class", "searchPKid");
   const sortId: HTMLOptionElement = document.createElement("option");
   sortId.innerHTML = "Id";
   const sortName: HTMLOptionElement = document.createElement("option");
@@ -110,7 +115,7 @@ export const pokeapi = () => {
   nav2.appendChild(nav2div2);
 
   const section: HTMLElement = document.createElement("section");
-  section.setAttribute('class','pokeSection')
+  section.setAttribute("class", "pokeSection");
   for (const pokemon of pokemonList) {
     const fig: HTMLElement = figurePokemon(pokemon);
     section.appendChild(fig);
@@ -119,4 +124,38 @@ export const pokeapi = () => {
   body.appendChild(div);
   body.appendChild(nav2);
   body.appendChild(section);
+
+  nav2div0Input.addEventListener("input", () => {
+    section.innerHTML = "";
+    nav2div1select.value='All'
+    nav2div2select.value='Id'
+    for (const pokemon of filterPokemonsName(
+      pokemonList,
+      nav2div0Input.value
+    )) {
+      const fig: HTMLElement = figurePokemon(pokemon);
+      section.appendChild(fig);
+    }
+  });
+  nav2div1select.addEventListener("change", () => {
+    section.innerHTML = "";
+    nav2div0Input.value = "";
+    nav2div2select.value='Id'
+    for (const pokemon of filterPokemonsType(
+      pokemonList,
+      nav2div1select.value
+    )) {
+      const fig: HTMLElement = figurePokemon(pokemon);
+      section.appendChild(fig);
+    }
+  });
+  nav2div2select.addEventListener('change',()=>{
+    section.innerHTML = "";
+    nav2div0Input.value = "";
+    nav2div1select.value='All'
+    for (const pokemon of sortPokemons(pokemonList,nav2div2select.value)) {
+      const fig: HTMLElement = figurePokemon(pokemon);
+      section.appendChild(fig);
+    }
+  })
 };
