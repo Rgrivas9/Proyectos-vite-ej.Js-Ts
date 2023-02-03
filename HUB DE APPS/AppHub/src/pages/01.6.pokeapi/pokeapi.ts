@@ -1,6 +1,5 @@
 //import { Pokemon, pokemonList } from "./data";
-import { typeSelect } from "../../components/typeSelect";
-import { pokemonList } from "./data";
+//import { typeSelect } from "../../components/typeSelect";
 import "./pokeapi.css";
 export const pokeapi = () => {
   const body = document.querySelector<HTMLBodyElement>(
