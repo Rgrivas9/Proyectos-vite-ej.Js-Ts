@@ -2,7 +2,7 @@
 import { typeSelect } from "../../components/typeSelect";
 import { figurePokemon } from "../../components/figurePokemon";
 import { principal } from "../01.0principal/principal";
-import { pokemonList } from "./data";
+import { Pokemon, pokemonList } from "./data";
 import "./pokeapi.css";
 import "./gradientesPK.css";
 import {
@@ -126,36 +126,45 @@ export const pokeapi = () => {
   body.appendChild(section);
 
   nav2div0Input.addEventListener("input", () => {
+    localStorage.setItem('namefilter',nav2div0Input.value)
     section.innerHTML = "";
-    nav2div1select.value='All'
-    nav2div2select.value='Id'
-    for (const pokemon of filterPokemonsName(
-      pokemonList,
-      nav2div0Input.value
-    )) {
+    localStorage.getItem('typefilter') ? nav2div1select.value=localStorage.getItem('typefilter') as string : nav2div1select.value='All'
+    localStorage.getItem('sortPokemon') ? nav2div2select.value=localStorage.getItem('sortPokemon') as string : nav2div2select.value='Id'
+    const typedP:Pokemon[]=filterPokemonsType(pokemonList,nav2div1select.value)
+    const filteredP:Pokemon[]=filterPokemonsName(typedP,nav2div0Input.value)
+    const sortedP:Pokemon[]=sortPokemons(filteredP,nav2div2select.value)
+    for (const pokemon of sortedP) {
       const fig: HTMLElement = figurePokemon(pokemon);
-      section.appendChild(fig);
+      section.appendChild(fig); 
+
     }
   });
   nav2div1select.addEventListener("change", () => {
+    localStorage.setItem('typefilter',nav2div1select.value)
     section.innerHTML = "";
-    nav2div0Input.value = "";
-    nav2div2select.value='Id'
-    for (const pokemon of filterPokemonsType(
-      pokemonList,
-      nav2div1select.value
-    )) {
+    localStorage.getItem('namefilter') ? nav2div0Input.value=localStorage.getItem('namefilter') as string : nav2div0Input.value = "";
+    localStorage.getItem('sortPokemon') ? nav2div2select.value=localStorage.getItem('sortPokemon') as string : nav2div2select.value='Id'
+    const typedP:Pokemon[]=filterPokemonsType(pokemonList,nav2div1select.value)
+    const filteredP:Pokemon[]=filterPokemonsName(typedP,nav2div0Input.value)
+    const sortedP:Pokemon[]=sortPokemons(filteredP,nav2div2select.value)
+    for (const pokemon of sortedP) {
       const fig: HTMLElement = figurePokemon(pokemon);
-      section.appendChild(fig);
+      section.appendChild(fig); 
+
     }
   });
   nav2div2select.addEventListener('change',()=>{
+    localStorage.setItem('sortPokemon',nav2div2select.value)
     section.innerHTML = "";
-    nav2div0Input.value = "";
-    nav2div1select.value='All'
-    for (const pokemon of sortPokemons(pokemonList,nav2div2select.value)) {
+    localStorage.getItem('typefilter') ? nav2div1select.value=localStorage.getItem('typefilter') as string : nav2div1select.value='All'
+    localStorage.getItem('namefilter') ? nav2div0Input.value=localStorage.getItem('namefilter') as string : nav2div0Input.value = "";
+    const typedP:Pokemon[]=filterPokemonsType(pokemonList,nav2div1select.value)
+    const filteredP:Pokemon[]=filterPokemonsName(typedP,nav2div0Input.value)
+    const sortedP:Pokemon[]=sortPokemons(filteredP,nav2div2select.value)
+    for (const pokemon of sortedP) {
       const fig: HTMLElement = figurePokemon(pokemon);
-      section.appendChild(fig);
+      section.appendChild(fig); 
+
     }
   })
 };

@@ -1,4 +1,4 @@
-import { Pokemon, pokemonList } from "../pages/01.6.pokeapi/data";
+import { Pokemon} from "../pages/01.6.pokeapi/data";
 
 export const filterPokemonsName = (
   list: Pokemon[],
@@ -24,7 +24,7 @@ export const filterPokemonsType = (
     fList = list.filter((pokemon) => pokemon.type.join("") == value);
   }
   if (value ==='All') {
-    fList=pokemonList
+    fList=list
   }
 
   return fList;
