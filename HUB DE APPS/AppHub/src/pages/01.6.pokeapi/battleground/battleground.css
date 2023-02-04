@@ -16,9 +16,12 @@
 .Battleground nav img {
   width: 40px;
 }
+.mainDivBattle h3{
+  text-transform: capitalize;
+}
 .mainDivBattle {
   height: 70vh;
-  background-image: url("https://res.cloudinary.com/di0zpa5yw/image/upload/v1675544166/gamesHub/images_pt3hl8.jpg");
+  background-image: url("https://res.cloudinary.com/di0zpa5yw/image/upload/v1675554181/gamesHub/images_xoyjda.png");
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
@@ -126,6 +129,7 @@
   width: 100vw;
   background-color: black;
   position: absolute;
+  text-transform: capitalize;
 }
 .attackNav div {
   background-color: rgba(0, 0, 0, 0.596);
