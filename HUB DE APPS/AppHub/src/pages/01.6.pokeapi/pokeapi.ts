@@ -25,16 +25,19 @@ export const pokeapi = () => {
   navDiv1h3.innerHTML = "Difficulty";
   const difficultyBtn: HTMLButtonElement = document.createElement("button");
   let pKDif: string = "";
+  pKDif='init'
   localStorage.getItem("PKDif")
     ? (pKDif = localStorage.getItem("PKDif") as string)
     : localStorage.setItem("PKDif", "Easy");
   pKDif = localStorage.getItem("PKDif") as string;
   let PKRecordEASY: string = "";
+  PKRecordEASY='init'
   localStorage.getItem("PKRecordEasy")
     ? (PKRecordEASY = localStorage.getItem("PKRecordEasy") as string)
     : localStorage.setItem("PKRecordEasy", "0000");
   PKRecordEASY = localStorage.getItem("PKRecordEasy") as string;
   let PKRecordHARD: string = "";
+  PKRecordHARD='init'
   localStorage.getItem("PKRecordHard")
     ? (PKRecordHARD = localStorage.getItem("PKRecordHard") as string)
     : localStorage.setItem("PKRecordHard", "0000");
