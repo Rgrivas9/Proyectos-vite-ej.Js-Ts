@@ -90,10 +90,10 @@
   padding-right: 1rem;
 }
 .Pokemon .youPokemon img{
-  transform: scale(1.9);
+  transform: scale(1.6);
 }
 .Pokemon .opPokemon img{
-  transform: scale(1.9);
+  transform: scale(1.6);
 }
 .Pokemon .opPokemon div {
   width: 100%;
