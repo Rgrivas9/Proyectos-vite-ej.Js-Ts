@@ -6,12 +6,9 @@ import "../../styles/switch.css";
 import { switchPrincipal } from "../../components/switchPrincipal";
 import { pokeapi } from "../01.6.pokeapi/pokeapi";
 import { main } from "../00.main/00main";
+import { switchColor } from "../../utils/switch";
 
 export const principal = (): void => {
-  const location:string[]=(window.location.href).split('/')
-  location.pop()
-  const baseURL:string=location.join('/')
-  console.log(baseURL)
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;
@@ -52,4 +49,9 @@ export const principal = (): void => {
   section.appendChild(pokemon);
   body.appendChild(nav);
   body.appendChild(section);
+  const num:number=parseInt(localStorage.getItem('colour') as string)
+  localStorage.setItem("colour", n.toString());
+    switchColor(num,'#principalB');
+    switchColor(num,'#principalNav');
+    switchColor(num,'#principalSection');
 };

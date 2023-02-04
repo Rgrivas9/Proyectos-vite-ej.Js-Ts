@@ -295,6 +295,7 @@
   padding: 1rem;
   border-radius: 5px;
   overflow: scroll;
+  overflow-x: hidden;
 }
 .pokeSection .habdivPK div:hover p {
   display: flex;
