@@ -126,5 +126,44 @@ export const figurePokemon = (pokemon: Pokemon): HTMLElement => {
   figure.appendChild(section);
   figure.appendChild(div);
 
+  figure.addEventListener("click", () => {
+    const img1 = document.querySelector<HTMLImageElement>(
+      ".emptyFig1img"
+    ) as HTMLImageElement;
+    const img2 = document.querySelector<HTMLImageElement>(
+      ".emptyFig2img"
+    ) as HTMLImageElement;
+    const h21 = document.querySelector<HTMLImageElement>(
+      ".emptyFig1h2"
+    ) as HTMLHeadingElement;
+    const h22 = document.querySelector<HTMLImageElement>(
+      ".emptyFig2h2"
+    ) as HTMLHeadingElement;
+    const btn = document.querySelector<HTMLButtonElement>(
+      ".fightbutton"
+    ) as HTMLButtonElement;
+    if (
+      localStorage.getItem("Poke1") != "none" &&
+      localStorage.getItem("Poke2") == "none"
+    ) {
+      img2.setAttribute("src", pokemon.images.front);
+      h22.innerHTML = pokemon.name;
+      localStorage.setItem("Poke2", pokemon.name);
+      btn.innerHTML = "FIGHT!";
+      btn.removeAttribute("disabled");
+      btn.classList.add("fightPokemons");
+    }
+    if (localStorage.getItem("Poke1") == "none") {
+      img1.setAttribute("src", pokemon.images.front);
+      h21.innerHTML = pokemon.name;
+      localStorage.setItem("Poke1", pokemon.name);
+      if (localStorage.getItem("Poke2") != "none") {
+        btn.innerHTML = "FIGHT!";
+        btn.removeAttribute("disabled");
+        btn.classList.add("fightPokemons");
+      }
+    }
+  });
+
   return figure;
 };

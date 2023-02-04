@@ -14,6 +14,8 @@ export const pokeapi = () => {
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;
+  localStorage.setItem('Poke1','none')
+  localStorage.setItem('Poke2','none')
   body.removeAttribute("id");
   body.setAttribute("class", "Pokemon");
   const nav: HTMLElement = document.createElement("nav");
@@ -22,9 +24,33 @@ export const pokeapi = () => {
   const navDiv1h3: HTMLHeadingElement = document.createElement("h3");
   navDiv1h3.innerHTML = "Difficulty";
   const difficultyBtn: HTMLButtonElement = document.createElement("button");
-  difficultyBtn.innerHTML = "Easy";
+  let pKDif: string = "";
+  localStorage.getItem("PKDif")
+    ? (pKDif = localStorage.getItem("PKDif") as string)
+    : localStorage.setItem("PKDif", "Easy");
+  pKDif = localStorage.getItem("PKDif") as string;
+  let PKRecordEASY: string = "";
+  localStorage.getItem("PKRecordEasy")
+    ? (PKRecordEASY = localStorage.getItem("PKRecordEasy") as string)
+    : localStorage.setItem("PKRecordEasy", "0000");
+  PKRecordEASY = localStorage.getItem("PKRecordEasy") as string;
+  let PKRecordHARD: string = "";
+  localStorage.getItem("PKRecordHard")
+    ? (PKRecordHARD = localStorage.getItem("PKRecordHard") as string)
+    : localStorage.setItem("PKRecordHard", "0000");
+  PKRecordHARD = localStorage.getItem("PKRecordHard") as string;
+  difficultyBtn.innerHTML = localStorage.getItem("PKDif") as string;
+  difficultyBtn.addEventListener('click',()=>{
+    localStorage.getItem("PKDif")=='Easy' ? localStorage.setItem("PKDif", "Hard") : localStorage.setItem("PKDif", "Easy");
+    difficultyBtn.innerHTML = localStorage.getItem("PKDif") as string;
+    navH2.innerHTML = `RECORD: ${
+      localStorage.getItem(`PKRecord${localStorage.getItem("PKDif")}`) as string
+    }`
+  })
   const navH2: HTMLHeadingElement = document.createElement("h2");
-  navH2.innerHTML = "RECORD: 0000";
+  navH2.innerHTML = `RECORD: ${
+    localStorage.getItem(`PKRecord${localStorage.getItem("PKDif")}`) as string
+  }`;
   const navDiv2: HTMLDivElement = document.createElement("div");
   navDiv2.setAttribute("class", "navDiv2PK");
   const htpBtn: HTMLButtonElement = document.createElement("button");
@@ -65,9 +91,23 @@ export const pokeapi = () => {
   const divDiv1Div: HTMLDivElement = document.createElement("div");
   const emptyFig: HTMLElement = document.createElement("figure");
   const emptyFig2: HTMLElement =
-    document.createElement("figure"); /* ---------------------emptyfig */
+    document.createElement("figure"); /* ---------------------------------emptyfig */
+  const emptyFig1img:HTMLImageElement=document.createElement('img')
+  emptyFig1img.setAttribute('class','emptyFig1img')
+  const emptyFig1h2:HTMLHeadingElement=document.createElement('h2')
+  emptyFig1h2.setAttribute('class','emptyFig1h2')
+  const emptyFig2img:HTMLImageElement=document.createElement('img')
+  emptyFig2img.setAttribute('class','emptyFig2img')
+  const emptyFig2h2:HTMLHeadingElement=document.createElement('h2')
+  emptyFig2h2.setAttribute('class','emptyFig2h2')
+  emptyFig.appendChild(emptyFig1img)
+  emptyFig.appendChild(emptyFig1h2)
+  emptyFig2.appendChild(emptyFig2img)
+  emptyFig2.appendChild(emptyFig2h2)
   const divDiv2Btn: HTMLButtonElement = document.createElement("button");
   divDiv2Btn.innerHTML = "VS";
+  divDiv2Btn.setAttribute('disabled','true')
+  divDiv2Btn.setAttribute('class','fightbutton')
   const divDiv3H3: HTMLHeadingElement = document.createElement("h3");
   divDiv3H3.innerHTML = "Opponent";
   const divDiv3Div: HTMLDivElement = document.createElement("div");
@@ -124,49 +164,94 @@ export const pokeapi = () => {
   body.appendChild(div);
   body.appendChild(nav2);
   body.appendChild(section);
-  localStorage.setItem('namefilter',"")
-  localStorage.setItem('typefilter','All')
-  localStorage.setItem('sortPokemon','Id')
+  localStorage.setItem("namefilter", "");
+  localStorage.setItem("typefilter", "All");
+  localStorage.setItem("sortPokemon", "Id");
   nav2div0Input.addEventListener("input", () => {
-    localStorage.setItem('namefilter',nav2div0Input.value)
+    localStorage.setItem("namefilter", nav2div0Input.value);
     section.innerHTML = "";
-    localStorage.getItem('typefilter') ? nav2div1select.value=localStorage.getItem('typefilter') as string : nav2div1select.value='All'
-    localStorage.getItem('sortPokemon') ? nav2div2select.value=localStorage.getItem('sortPokemon') as string : nav2div2select.value='Id'
-    const typedP:Pokemon[]=filterPokemonsType(pokemonList,nav2div1select.value)
-    const filteredP:Pokemon[]=filterPokemonsName(typedP,nav2div0Input.value)
-    const sortedP:Pokemon[]=sortPokemons(filteredP,nav2div2select.value)
+    localStorage.getItem("typefilter")
+      ? (nav2div1select.value = localStorage.getItem("typefilter") as string)
+      : (nav2div1select.value = "All");
+    localStorage.getItem("sortPokemon")
+      ? (nav2div2select.value = localStorage.getItem("sortPokemon") as string)
+      : (nav2div2select.value = "Id");
+    const typedP: Pokemon[] = filterPokemonsType(
+      pokemonList,
+      nav2div1select.value
+    );
+    const filteredP: Pokemon[] = filterPokemonsName(
+      typedP,
+      nav2div0Input.value
+    );
+    const sortedP: Pokemon[] = sortPokemons(filteredP, nav2div2select.value);
     for (const pokemon of sortedP) {
       const fig: HTMLElement = figurePokemon(pokemon);
-      section.appendChild(fig); 
-
+      section.appendChild(fig);
     }
   });
   nav2div1select.addEventListener("change", () => {
-    localStorage.setItem('typefilter',nav2div1select.value)
+    localStorage.setItem("typefilter", nav2div1select.value);
     section.innerHTML = "";
-    localStorage.getItem('namefilter') ? nav2div0Input.value=localStorage.getItem('namefilter') as string : nav2div0Input.value = "";
-    localStorage.getItem('sortPokemon') ? nav2div2select.value=localStorage.getItem('sortPokemon') as string : nav2div2select.value='Id'
-    const typedP:Pokemon[]=filterPokemonsType(pokemonList,nav2div1select.value)
-    const filteredP:Pokemon[]=filterPokemonsName(typedP,nav2div0Input.value)
-    const sortedP:Pokemon[]=sortPokemons(filteredP,nav2div2select.value)
+    localStorage.getItem("namefilter")
+      ? (nav2div0Input.value = localStorage.getItem("namefilter") as string)
+      : (nav2div0Input.value = "");
+    localStorage.getItem("sortPokemon")
+      ? (nav2div2select.value = localStorage.getItem("sortPokemon") as string)
+      : (nav2div2select.value = "Id");
+    const typedP: Pokemon[] = filterPokemonsType(
+      pokemonList,
+      nav2div1select.value
+    );
+    const filteredP: Pokemon[] = filterPokemonsName(
+      typedP,
+      nav2div0Input.value
+    );
+    const sortedP: Pokemon[] = sortPokemons(filteredP, nav2div2select.value);
     for (const pokemon of sortedP) {
       const fig: HTMLElement = figurePokemon(pokemon);
-      section.appendChild(fig); 
-
+      section.appendChild(fig);
     }
   });
-  nav2div2select.addEventListener('change',()=>{
-    localStorage.setItem('sortPokemon',nav2div2select.value)
+  nav2div2select.addEventListener("change", () => {
+    localStorage.setItem("sortPokemon", nav2div2select.value);
     section.innerHTML = "";
-    localStorage.getItem('typefilter') ? nav2div1select.value=localStorage.getItem('typefilter') as string : nav2div1select.value='All'
-    localStorage.getItem('namefilter') ? nav2div0Input.value=localStorage.getItem('namefilter') as string : nav2div0Input.value = "";
-    const typedP:Pokemon[]=filterPokemonsType(pokemonList,nav2div1select.value)
-    const filteredP:Pokemon[]=filterPokemonsName(typedP,nav2div0Input.value)
-    const sortedP:Pokemon[]=sortPokemons(filteredP,nav2div2select.value)
+    localStorage.getItem("typefilter")
+      ? (nav2div1select.value = localStorage.getItem("typefilter") as string)
+      : (nav2div1select.value = "All");
+    localStorage.getItem("namefilter")
+      ? (nav2div0Input.value = localStorage.getItem("namefilter") as string)
+      : (nav2div0Input.value = "");
+    const typedP: Pokemon[] = filterPokemonsType(
+      pokemonList,
+      nav2div1select.value
+    );
+    const filteredP: Pokemon[] = filterPokemonsName(
+      typedP,
+      nav2div0Input.value
+    );
+    const sortedP: Pokemon[] = sortPokemons(filteredP, nav2div2select.value);
     for (const pokemon of sortedP) {
       const fig: HTMLElement = figurePokemon(pokemon);
-      section.appendChild(fig); 
-
+      section.appendChild(fig);
     }
+  });
+  emptyFig.addEventListener('click',()=>{
+    emptyFig1img.removeAttribute('src')
+    emptyFig1h2.innerHTML=''
+    localStorage.setItem('Poke1','none')
+    divDiv2Btn.innerHTML='VS'
+    divDiv2Btn.setAttribute('disabled','true')
+    divDiv2Btn.classList.remove('fightPokemons')
+    
+  })
+  emptyFig2.addEventListener('click',()=>{
+    emptyFig2img.removeAttribute('src')
+    emptyFig2h2.innerHTML=''
+    localStorage.setItem('Poke2','none')
+    divDiv2Btn.innerHTML='VS'
+    divDiv2Btn.setAttribute('disabled','true')
+    divDiv2Btn.classList.remove('fightPokemons')
+
   })
 };

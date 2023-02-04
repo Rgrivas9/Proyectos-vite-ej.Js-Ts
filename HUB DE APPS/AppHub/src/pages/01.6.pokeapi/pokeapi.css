@@ -89,9 +89,22 @@
   align-items: flex-end;
   padding-right: 1rem;
 }
+.Pokemon .youPokemon img{
+  transform: scale(1.9);
+}
+.Pokemon .opPokemon img{
+  transform: scale(1.9);
+}
+.Pokemon .opPokemon div {
+  width: 100%;
+}
 .Pokemon .youPokemon figure {
   margin-top: 1rem;
-  min-width: 250px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 150px;
   background: rgba(56, 152, 248, 0.37);
   background: linear-gradient(
@@ -103,9 +116,14 @@
     rgba(176, 88, 160, 0.281) 100%
   );
 }
+
 .Pokemon .opPokemon figure {
   margin-top: 1rem;
-  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   height: 150px;
   background: rgba(56, 152, 248, 0.37);
   background: linear-gradient(
@@ -167,12 +185,10 @@
   }
   .searchPKid option {
     font-size: 10px;
-    
   }
-  .searchPKtype option{
+  .searchPKtype option {
     font-size: 10px;
   }
-  
 }
 @media screen and (min-width: 1000px) {
   .nav2Poke input {
@@ -332,4 +348,19 @@
 }
 .Pokemon .pokeSection figure:hover .noShiny {
   opacity: 100;
+}
+.fightPokemons {
+  background-color: rgb(143, 11, 11) !important;
+  width: 160px;
+  height: 100px;
+  border: 2px solid rgb(255, 174, 0) !important;
+  color: rgb(207, 150, 44) !important;
+  border-radius: 25px;
+  filter: brightness(150%);
+  position: absolute;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
