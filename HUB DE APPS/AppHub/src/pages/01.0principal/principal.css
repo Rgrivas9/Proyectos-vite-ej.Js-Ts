@@ -100,6 +100,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  position: relative;
 }
 #principalB .infodiv img {
   width: 25px;
@@ -131,15 +132,16 @@
 .pokeModalhidden {
   display: none;
 }
+
 .pokeModal {
   font-size: 13px;
   border-radius: 5px;
   border: 3px solid black;
   color: gold;
-  background-color: grey;
+  background-color: rgba(128, 128, 128, 0.842);
   position: absolute;
-  top: 220px;
-  left: 450px;
+  top: 0px;
+  left: 0px;
   width: 200px;
   height: 200px;
   overflow-y: auto;

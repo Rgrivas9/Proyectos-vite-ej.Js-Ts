@@ -10,12 +10,16 @@ import {
   filterPokemonsType,
 } from "../../utils/filterPokemons";
 import { sortPokemons } from "../../utils/sortPokemons";
+import { battleground } from "./battleground/battleground";
+
+
 export const pokeapi = () => {
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;
   localStorage.setItem('Poke1','none')
   localStorage.setItem('Poke2','none')
+  localStorage.setItem('Pokeapi','true')
   body.removeAttribute("id");
   body.setAttribute("class", "Pokemon");
   const nav: HTMLElement = document.createElement("nav");
@@ -67,10 +71,17 @@ export const pokeapi = () => {
     "https://res.cloudinary.com/di0zpa5yw/image/upload/v1675264883/gamesHub/salida_bspcsc.png"
   );
   exitImg.addEventListener("click", () => {
+    if (localStorage.getItem('Pokeapi')=='true'){
     body.removeAttribute("class");
     body.setAttribute("id", "principalB");
     body.innerHTML = "";
-    principal();
+    principal();}
+    if (localStorage.getItem('Pokeapi')=='false'){
+      body.removeAttribute("class");
+      body.innerHTML = "";
+      localStorage.setItem('Pokeapi','true')
+      difficultyBtn.removeAttribute('disabled')
+      pokeapi();}
   });
   returnBtn.appendChild(exitImg);
   navDiv1.appendChild(navDiv1h3);
@@ -256,5 +267,10 @@ export const pokeapi = () => {
     divDiv2Btn.setAttribute('disabled','true')
     divDiv2Btn.classList.remove('fightPokemons')
 
+  })
+  divDiv2Btn.addEventListener('click',()=>{
+    battleground()
+    localStorage.setItem('Pokeapi','false')
+    difficultyBtn.setAttribute('disabled','true')
   })
 };

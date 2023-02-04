@@ -1,5 +1,4 @@
 import { Pokemon} from "../pages/01.6.pokeapi/data";
-
 export const filterPokemonsName = (
   list: Pokemon[],
   value: string
@@ -11,7 +10,6 @@ export const filterPokemonsName = (
 };
 let types: string = "";
 let fList: Pokemon[] = [];
-
 export const filterPokemonsType = (
   list: Pokemon[],
   value: string
@@ -26,6 +24,5 @@ export const filterPokemonsType = (
   if (value ==='All') {
     fList=list
   }
-
   return fList;
 };

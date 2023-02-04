@@ -1,0 +1,152 @@
+.Battleground nav {
+  display: flex;
+  justify-content: space-between;
+  background: rgb(56, 153, 248);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 153, 248, 1) 0%,
+    rgba(9, 27, 54, 1) 51%,
+    rgba(176, 88, 160, 1) 100%
+  );
+  padding: 1rem 2rem;
+  width: 100vw;
+  height: 11vh;
+  font-family: "pokemon";
+}
+.Battleground nav img {
+  width: 40px;
+}
+.mainDivBattle {
+  height: 70vh;
+  background-image: url("https://res.cloudinary.com/di0zpa5yw/image/upload/v1675544166/gamesHub/images_pt3hl8.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: 'pokemon';
+}
+.Battleground .mainDivBattle img {
+  background-image: url("https://res.cloudinary.com/di0zpa5yw/image/upload/v1675542205/gamesHub/base_a69rkf.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.mainDivOp {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 15rem;
+    padding: 5rem 2rem;
+    padding-bottom: 0;
+}
+.mainDivOp img {
+    width: 160px;
+    background-position-y: 55px;
+    background-position-x: 0px;
+    overflow: visible;
+}
+.mainDivOpL {
+    background-color: rgba(0, 0, 0, 0.808);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+    height: 100px;
+    gap: 1rem;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
+    clip-path: polygon(2% 2%, 1% 97%, 100% 99%, 97% 93%, 92% 7%, 87% 2%);
+}
+.opLdivContain {
+    height: 10px;
+    width: 170px;
+    margin-top: 5px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+.opLdivBar{
+    margin: 1px 1px;
+    height: 8px;
+    background-color: green;
+}
+.mainDivYouR {
+    background-color: rgba(0, 0, 0, 0.808);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 200px;
+    height: 100px;
+    gap: 1rem;
+    padding: 1rem;
+    padding-top: 0.5rem;
+    margin-top: 4rem;
+    clip-path: polygon(7% 1%, 4% 9%, 4% 90%, 1% 98%, 100% 99%, 99% 1%);
+}
+.youRdivContain {
+    height: 10px;
+    width: 170px;
+    margin-top: 5px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+.youRdivBar{
+    margin: 1px 0;
+    height: 8px;
+    background-color: green;
+}
+.mainDivYou {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 4rem;
+    
+}
+.mainDivYou img {
+    width: 350px;
+    height: 250px;
+    background-position-y: 90px;
+    background-position-x: 0px;
+    object-fit: cover;
+    overflow: visible;
+    background-size: 100% !important;
+    padding-top: 6rem;
+}
+.mainDivOp h2 {
+    position: absolute;
+    top: 11vh;
+    left: 2vw;
+}
+.attackNav {
+  height: 19vh !important;
+  width: 100vw;
+  background-color: black;
+  position: absolute;
+}
+.attackNav div {
+  background-color: rgba(0, 0, 0, 0.596);
+  width: 17%;
+  margin: 0 1rem;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 2px solid rgb(255, 166, 0);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.attackNav h5 {
+  font-size: 11px;
+  border-bottom: 1px solid rgb(255, 166, 0);
+  padding-bottom: 0.2rem;
+}
+.attackNav ul {
+  margin-top: 0.5rem;
+}
+.attackNav li {
+  font-size: 11px;
+}

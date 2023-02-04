@@ -15,3 +15,5 @@ exit https://res.cloudinary.com/di0zpa5yw/image/upload/v1675264883/gamesHub/sali
 info https://res.cloudinary.com/di0zpa5yw/image/upload/v1675265110/gamesHub/info_gkkmvw.png
 logout https://res.cloudinary.com/di0zpa5yw/image/upload/v1675277789/gamesHub/cerrar-sesion_npnjo3.png
 pokeback https://res.cloudinary.com/di0zpa5yw/image/upload/v1675434055/gamesHub/pokooo_cxzirm.jpg
+base pokemon https://res.cloudinary.com/di0zpa5yw/image/upload/v1675542205/gamesHub/base_a69rkf.png
+bg battle https://res.cloudinary.com/di0zpa5yw/image/upload/v1675544166/gamesHub/images_pt3hl8.jpg
