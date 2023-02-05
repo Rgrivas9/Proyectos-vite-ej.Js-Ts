@@ -1,6 +1,7 @@
 //import { filterPokemonsName } from "../../../utils/filterPokemons";
 import { Pokemon, pokemonList } from "../data";
 import "./battleground.css";
+import { battleSystem } from "./battleSystem";
 export const battleground = (): void => {
   localStorage.setItem("scorePoke", "0000");
   const body = document.querySelector<HTMLBodyElement>(
@@ -20,6 +21,8 @@ export const battleground = (): void => {
   /* -------------------------------------------------------------------------LIMPIAR */
   const poke1:Pokemon=pokemonList.filter((pokemon)=>pokemon.name == localStorage.getItem('Poke1'))[0]
   const poke2:Pokemon=pokemonList.filter((pokemon)=>pokemon.name == localStorage.getItem('Poke2'))[0]
+  console.log(poke1)
+  console.log(poke2)
   /* -------------------------------------------------------------------------------pokemons */
   const mainDiv: HTMLDivElement = document.createElement("div");
   mainDiv.setAttribute("class", "mainDivBattle");
@@ -110,6 +113,8 @@ export const battleground = (): void => {
 
   const attackNav: HTMLElement = document.createElement("nav");
   attackNav.setAttribute("class", "attackNav");
+  localStorage.setItem('HP1',poke1.stats[0].base.toString())
+  localStorage.setItem('HP2',poke2.stats[0].base.toString())
   for (const attack of poke1.moves){
     const attackdiv:HTMLDivElement=document.createElement('div')
     const name:HTMLHeadingElement=document.createElement('h5')
@@ -124,6 +129,9 @@ export const battleground = (): void => {
     attackdiv.appendChild(name)
     attackdiv.appendChild(ul)
     attackNav.appendChild(attackdiv)
+    attackdiv.addEventListener('click',()=>{
+      battleSystem(poke1.stats[1].base,attack.accuracy,attack.type,poke2.type[0],poke2.type[1],poke2.stats[5].base,poke2.stats[2].base)
+    })
   }
   body.appendChild(attackNav);
 };
