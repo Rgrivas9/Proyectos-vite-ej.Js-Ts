@@ -1,4 +1,4 @@
-import { filterPokemonsName } from "../../../utils/filterPokemons";
+//import { filterPokemonsName } from "../../../utils/filterPokemons";
 import { Pokemon, pokemonList } from "../data";
 import "./battleground.css";
 export const battleground = (): void => {
@@ -18,8 +18,8 @@ export const battleground = (): void => {
   body.removeChild(nav2);
   body.removeChild(pokeSection);
   /* -------------------------------------------------------------------------LIMPIAR */
-  const poke1:Pokemon=filterPokemonsName(pokemonList,localStorage.getItem('Poke1') as string)[0]
-  const poke2:Pokemon=filterPokemonsName(pokemonList,localStorage.getItem('Poke2') as string)[0]
+  const poke1:Pokemon=pokemonList.filter((pokemon)=>pokemon.name == localStorage.getItem('Poke1'))[0]
+  const poke2:Pokemon=pokemonList.filter((pokemon)=>pokemon.name == localStorage.getItem('Poke2'))[0]
   /* -------------------------------------------------------------------------------pokemons */
   const mainDiv: HTMLDivElement = document.createElement("div");
   mainDiv.setAttribute("class", "mainDivBattle");
