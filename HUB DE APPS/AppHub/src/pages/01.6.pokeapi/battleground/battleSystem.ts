@@ -14,39 +14,46 @@ export const battleSystem = (
   attackOP: number,
   speedOP: number,
   deffenseOP: number,
-  attacksListOP: Moves[]
+  attacksListOP: Moves[],
+  attackname:string
 ) => {
   let hp1: number = parseInt(localStorage.getItem("HP1") as string);
   let hp2: number = parseInt(localStorage.getItem("HP2") as string);
   /* let score: number = parseInt(localStorage.getItem("scorePoke") as string); */
   let baseAttack: number = 10;
   let opBaseAttack: number = 5;
+  let youList:string[]=['normal']
+  let isCritical:string='no'
   /* ----------------------------------------------------------------------------------------declaración */
   if (localStorage.getItem("PKDif") == "Hard") {
-    baseAttack = 5; /* opBaseAttack=8 */
+    baseAttack = 5; opBaseAttack=10 
   }
   console.log("base", baseAttack);
   /* -----------------------------------------------------------------------------------------transformación de tu base attack */
   baseAttack = baseAttack + attack / 10;
   console.log("ataque despues de tu ataque y antes de variables", baseAttack);
   if (acc == null) {
+    youList.push('null')
     baseAttack = baseAttack * 0;
     console.log("ataque nulo");
   }
   const fail: number = globalRandomNumber(100);
   if (fail > acc && acc != null) {
+    youList.push('fail')
     baseAttack = baseAttack * 0;
     console.log("ataque fallido");
   }
 
   const critic: number = globalRandomNumber(100);
   if (critic < 8) {
+    isCritical='yes'
     baseAttack = baseAttack * 2;
     console.log("ataque crítico");
   }
 
   const evade: number = globalRandomNumber(500);
   if (evade < speedOP) {
+    youList.push('evade')
     baseAttack = baseAttack * 0;
     console.log("ataque esquivado");
   }
@@ -54,10 +61,12 @@ export const battleSystem = (
   /* ---------------------------------------------------------------------------------------comparación de tipos de tu ataque */
   const result: number = compareTypes(attackType, type1OP, type2OP);
   if (result == 1) {
+    youList.push('effect')
     baseAttack = baseAttack * 1.5;
     console.log("efectivo");
   }
   if (result == 2) {
+    youList.push('noeffect')
     baseAttack = baseAttack * 0;
     console.log("nulo");
   }
@@ -72,12 +81,31 @@ export const battleSystem = (
   console.log("ataque final", baseAttack);
   hp2 = hp2 - Math.round(baseAttack);
   console.log(hp2);
+  const maindivbattle=document.querySelector<HTMLDivElement>('.mainDivBattle') as HTMLDivElement
+  const youDiv:HTMLDivElement=document.createElement('div')
+  maindivbattle.appendChild(youDiv)
+  youDiv.innerHTML=`${localStorage.getItem('Poke1')} ha usado ${attackname}!`
+  youDiv.setAttribute('class','resultBattle')
+  setTimeout(() => {if (youList[1]=='null'){youDiv.innerHTML=`Pero ${attackname} no tiene efecto en los enemigos!`;youList=[]}
+  if (youList[1]=='fail'){youDiv.innerHTML=`Pero falló!`;youList=[]}
+  if (youList[1]=='evade'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke2')} lo esquivó!`;youList=[]}
+  if (youList[1]=='effect'){youDiv.innerHTML=`Es muy efectivo!`;youList=['critical']}
+  if (youList[1]=='noeffect'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke2')} es inmune a ese tipo de ataque!`;youList=[]}
+  if (youList[0]=='normal'){youDiv.innerHTML=`El ataque ha tenido éxito!`;youList=['critical']}}, 1200)
+  setTimeout(() => {if (isCritical=='yes' && youList[0]=='critical'){youDiv.innerHTML=`Daño crítico!`}else {youDiv.innerHTML=''}}, 2400)
+  setTimeout(() => {
+    maindivbattle.removeChild(youDiv)
+  }, 3600);
   if (hp2 <= 0) {
+    hp2=0
     console.log("WIN!");
   }
   localStorage.setItem("HP2", hp2.toString());
   if (hp2 > 0) {
+    
     setTimeout(() => {
+      let opList:string[]=['normal']
+      let opisCritical:string='no'
       opBaseAttack = opBaseAttack + attackOP / 10;
       console.log(
         "ataque despues de ataque oponente y antes de variables",
@@ -86,23 +114,27 @@ export const battleSystem = (
       const opAttack: Moves =
         attacksListOP[globalRandomNumber(attacksListOP.length) - 1];
       if (opAttack.accuracy == null) {
+        opList.push('null')
         opBaseAttack = opBaseAttack * 0;
         console.log("ataque op nulo");
       }
       const fail: number = globalRandomNumber(100);
       if (fail > opAttack.accuracy && opAttack.accuracy != null) {
+        opList.push('fail')
         opBaseAttack = opBaseAttack * 0;
         console.log("ataque op fallido");
       }
 
       const critic: number = globalRandomNumber(100);
       if (critic < 8) {
+        opisCritical='yes'
         opBaseAttack = opBaseAttack * 2;
         console.log("ataque op crítico");
       }
 
       const evade: number = globalRandomNumber(500);
       if (evade < speed) {
+        opList.push('evade')
         opBaseAttack = opBaseAttack * 0;
         console.log("ataque op esquivado");
       }
@@ -110,10 +142,12 @@ export const battleSystem = (
       /* ---------------------------------------------------------------------------tipos */
       const result: number = compareTypes(opAttack.type, type1, type2);
       if (result == 1) {
+        opList.push('effect')
         opBaseAttack = opBaseAttack * 1.5;
         console.log("efectivo");
       }
       if (result == 2) {
+        opList.push('noeffect')
         opBaseAttack = opBaseAttack * 0;
         console.log("nulo");
       }
@@ -129,10 +163,28 @@ export const battleSystem = (
       hp1 = hp1 - Math.round(opBaseAttack);
       console.log(hp1);
       if (hp1 <= 0) {
+        hp1=0
         console.log("LOSE!");
       }
+      
       localStorage.setItem("HP1", hp1.toString());
-    }, 3000);
+      const maindivbattle=document.querySelector<HTMLDivElement>('.mainDivBattle') as HTMLDivElement
+      const youDiv:HTMLDivElement=document.createElement('div')
+      maindivbattle.appendChild(youDiv)
+      youDiv.innerHTML=`${localStorage.getItem('Poke2')} ha usado ${opAttack.name}!`
+      youDiv.setAttribute('class','resultBattleop')
+      setTimeout(() => {if (opList[1]=='null'){youDiv.innerHTML=`Pero ${opAttack.name} no tiene efecto en los enemigos!`;opList=[]}
+      if (opList[1]=='fail'){youDiv.innerHTML=`Pero falló!`;opList=[]}
+      if (opList[1]=='evade'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke1')} lo esquivó!`;opList=[]}
+      if (opList[1]=='effect'){youDiv.innerHTML=`Es muy efectivo!`;opList=['critical']}
+      if (opList[1]=='noeffect'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke1')} es inmune a ese tipo de ataque!`;opList=[]}
+      if (opList[0]=='normal'){youDiv.innerHTML=`El ataque ha tenido éxito!`;opList=['critical']}}, 1200)
+      setTimeout(() => {if (opisCritical=='yes' && opList[0]=='critical'){youDiv.innerHTML=`Daño crítico!`}else {youDiv.innerHTML=''}}, 2400)
+      setTimeout(() => {
+        maindivbattle.removeChild(youDiv);
+        
+      }, 3600);
+    }, 4000);
   }
 };
 

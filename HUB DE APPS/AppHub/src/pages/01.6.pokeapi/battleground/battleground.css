@@ -162,3 +162,23 @@
 .attackNav li {
   font-size: 11px;
 }
+.resultBattle {
+  position: absolute;
+  top: 45vh;
+  left: 5vw;
+  background-color: whitesmoke;
+  color: black;
+  border: 2px solid gold;
+  font-family: 'pokemon';
+  font-size: 22px;
+}
+.resultBattleop {
+  position: absolute;
+  top: 45vh;
+  right: 5vw;
+  background-color: whitesmoke;
+  color: black;
+  border: 2px solid gold;
+  font-family: 'pokemon';
+  font-size: 22px;
+}

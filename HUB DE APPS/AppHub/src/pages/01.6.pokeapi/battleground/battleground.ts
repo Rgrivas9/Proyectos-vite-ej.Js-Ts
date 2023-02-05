@@ -146,8 +146,10 @@ export const battleground = (): void => {
         poke2.stats[1].base,
         poke2.stats[5].base,
         poke2.stats[2].base,
-        poke2.moves
+        poke2.moves,
+        attack.name
       );
+      setTimeout(() => {
       oph4.innerHTML = `HP: ${localStorage.getItem("HP2")}`;
       opLdivBar.setAttribute(
         "style",
@@ -155,7 +157,9 @@ export const battleground = (): void => {
           (parseInt(localStorage.getItem("HP2") as string) * 100) /
             poke2.stats[0].base
         )}%`
-      );
+        );
+      }, 1200);
+      ;
       setTimeout(() => {
         youh4.innerHTML = `HP: ${localStorage.getItem("HP1")}`;
         youRdivBar.setAttribute(
@@ -165,7 +169,7 @@ export const battleground = (): void => {
               poke1.stats[0].base
           )}%`
         );
-      }, 3100);
+      }, 5200);
     });
   }
   body.appendChild(attackNav);
