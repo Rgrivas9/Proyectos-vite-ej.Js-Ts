@@ -49,6 +49,8 @@ export const battleSystem = (
     console.log('ataque final',baseAttack)
     hp2=hp2-Math.round(baseAttack)
     console.log(hp2)
+
+    localStorage.setItem('HP2',hp2.toString())
 };
 
 const bug: string[] = ["grass", "psychic"];

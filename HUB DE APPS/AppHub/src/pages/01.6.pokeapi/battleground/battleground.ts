@@ -131,6 +131,8 @@ export const battleground = (): void => {
     attackNav.appendChild(attackdiv)
     attackdiv.addEventListener('click',()=>{
       battleSystem(poke1.stats[1].base,attack.accuracy,attack.type,poke2.type[0],poke2.type[1],poke2.stats[5].base,poke2.stats[2].base)
+      oph4.innerHTML =`HP: ${localStorage.getItem('HP2')}`
+      opLdivBar.setAttribute("style", `width: ${Math.round((parseInt(localStorage.getItem('HP2') as string)*100)/poke2.stats[0].base)}%`);
     })
   }
   body.appendChild(attackNav);
