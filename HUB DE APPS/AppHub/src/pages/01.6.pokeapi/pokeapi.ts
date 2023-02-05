@@ -80,6 +80,7 @@ export const pokeapi = () => {
       body.removeAttribute("class");
       body.innerHTML = "";
       localStorage.setItem('Pokeapi','true')
+      if(parseInt(localStorage.getItem('scorePoke') as string)>parseInt(localStorage.getItem(`PKRecord${localStorage.getItem('PKDif') as string}`) as string)){localStorage.setItem(`PKRecord${localStorage.getItem('PKDif') as string}`,localStorage.getItem('scorePoke') as string)}
       difficultyBtn.removeAttribute('disabled')
       pokeapi();}
   });

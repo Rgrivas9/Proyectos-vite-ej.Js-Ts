@@ -9,6 +9,7 @@ import { imgButton } from "../../components/imgButton";
 import { switchColor } from "../../utils/switch";
 
 export const main = (): void => {
+  localStorage.setItem('main','true')
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;

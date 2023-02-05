@@ -25,8 +25,6 @@ export const battleground = (): void => {
   const poke2: Pokemon = pokemonList.filter(
     (pokemon) => pokemon.name == localStorage.getItem("Poke2")
   )[0];
-  console.log(poke1);
-  console.log(poke2);
   /* -------------------------------------------------------------------------------pokemons */
   const mainDiv: HTMLDivElement = document.createElement("div");
   mainDiv.setAttribute("class", "mainDivBattle");
@@ -133,6 +131,11 @@ export const battleground = (): void => {
     attackdiv.appendChild(ul);
     attackNav.appendChild(attackdiv);
     attackdiv.addEventListener("click", () => {
+      const hp2pre:number=parseInt(localStorage.getItem('HP2') as string)
+      const average1:number=(poke1.stats[1].base+poke1.stats[2].base+poke1.stats[5].base)/3
+      const average2:number=(poke2.stats[1].base+poke2.stats[2].base+poke2.stats[5].base)/3
+      const average:number=Math.abs(average1-average2)
+      let scored:number=parseInt(localStorage.getItem('scorePoke') as string)
       const alldivs=document.querySelectorAll<HTMLDivElement>('.attackNav div') as NodeListOf<HTMLDivElement>
       alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))
       battleSystem(
@@ -160,6 +163,10 @@ export const battleground = (): void => {
             poke2.stats[0].base
         )}%`
         );
+        console.log(average)
+          scored=Math.round((scored + ((hp2pre-parseInt(localStorage.getItem("HP2") as string))*average)*2.5))
+          localStorage.setItem('scorePoke',scored.toString())
+          score.innerHTML = `SCORE: ${localStorage.getItem("scorePoke")}`;
       }, 1200);
       setTimeout(() => {
         if (parseInt(localStorage.getItem("HP2") as string)<=0){
