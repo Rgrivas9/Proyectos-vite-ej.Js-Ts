@@ -19,10 +19,14 @@ export const battleground = (): void => {
   body.removeChild(nav2);
   body.removeChild(pokeSection);
   /* -------------------------------------------------------------------------LIMPIAR */
-  const poke1:Pokemon=pokemonList.filter((pokemon)=>pokemon.name == localStorage.getItem('Poke1'))[0]
-  const poke2:Pokemon=pokemonList.filter((pokemon)=>pokemon.name == localStorage.getItem('Poke2'))[0]
-  console.log(poke1)
-  console.log(poke2)
+  const poke1: Pokemon = pokemonList.filter(
+    (pokemon) => pokemon.name == localStorage.getItem("Poke1")
+  )[0];
+  const poke2: Pokemon = pokemonList.filter(
+    (pokemon) => pokemon.name == localStorage.getItem("Poke2")
+  )[0];
+  console.log(poke1);
+  console.log(poke2);
   /* -------------------------------------------------------------------------------pokemons */
   const mainDiv: HTMLDivElement = document.createElement("div");
   mainDiv.setAttribute("class", "mainDivBattle");
@@ -38,7 +42,7 @@ export const battleground = (): void => {
   const opLdiv: HTMLDivElement = document.createElement("div");
   opLdiv.setAttribute("class", "opLdiv");
   const oph4: HTMLHeadingElement = document.createElement("h4");
-  oph4.innerHTML =`HP: ${poke2.stats[0].base}`; /* ---------------------------------------------------------------------------------HP OP */
+  oph4.innerHTML = `HP: ${poke2.stats[0].base}`; /* ---------------------------------------------------------------------------------HP OP */
   const opLdivContain: HTMLDivElement = document.createElement("div");
   opLdivContain.setAttribute("class", "opLdivContain");
   const opLdivBar: HTMLDivElement = document.createElement("div");
@@ -60,7 +64,7 @@ export const battleground = (): void => {
   const score: HTMLHeadingElement = document.createElement("h2");
   score.innerHTML = `SCORE: ${localStorage.getItem("scorePoke")}`;
   const img: HTMLImageElement = document.createElement("img");
-  img.setAttribute('src',poke2.images.front)
+  img.setAttribute("src", poke2.images.front);
 
   mainDivOpR.appendChild(score);
   mainDivOpR.appendChild(img);
@@ -75,7 +79,7 @@ export const battleground = (): void => {
   mainDivYouL.setAttribute("class", "mainDivYouL");
 
   const imgyou: HTMLImageElement = document.createElement("img");
-  imgyou.setAttribute('src',poke1.images.back)
+  imgyou.setAttribute("src", poke1.images.back);
 
   mainDivYouL.appendChild(imgyou);
 
@@ -87,8 +91,7 @@ export const battleground = (): void => {
   const youRdiv: HTMLDivElement = document.createElement("div");
   youRdiv.setAttribute("class", "youRdiv");
   const youh4: HTMLHeadingElement = document.createElement("h4");
-  youh4.innerHTML =
-    `HP: ${poke1.stats[0].base}`; /* ---------------------------------------------------------------------------------HP you */
+  youh4.innerHTML = `HP: ${poke1.stats[0].base}`; /* ---------------------------------------------------------------------------------HP you */
   const youRdivContain: HTMLDivElement = document.createElement("div");
   youRdivContain.setAttribute("class", "youRdivContain");
   const youRdivBar: HTMLDivElement = document.createElement("div");
@@ -113,27 +116,57 @@ export const battleground = (): void => {
 
   const attackNav: HTMLElement = document.createElement("nav");
   attackNav.setAttribute("class", "attackNav");
-  localStorage.setItem('HP1',poke1.stats[0].base.toString())
-  localStorage.setItem('HP2',poke2.stats[0].base.toString())
-  for (const attack of poke1.moves){
-    const attackdiv:HTMLDivElement=document.createElement('div')
-    const name:HTMLHeadingElement=document.createElement('h5')
-    const ul:HTMLUListElement=document.createElement('ul')
-    const type:HTMLLIElement=document.createElement('li')
-    const acc:HTMLLIElement=document.createElement('li')
-    name.innerHTML=attack.name
-    type.innerHTML=attack.type
-    acc.innerHTML=`Acc: ${attack.accuracy}`
-    ul.appendChild(type)
-    ul.appendChild(acc)
-    attackdiv.appendChild(name)
-    attackdiv.appendChild(ul)
-    attackNav.appendChild(attackdiv)
-    attackdiv.addEventListener('click',()=>{
-      battleSystem(poke1.stats[1].base,attack.accuracy,attack.type,poke2.type[0],poke2.type[1],poke2.stats[5].base,poke2.stats[2].base)
-      oph4.innerHTML =`HP: ${localStorage.getItem('HP2')}`
-      opLdivBar.setAttribute("style", `width: ${Math.round((parseInt(localStorage.getItem('HP2') as string)*100)/poke2.stats[0].base)}%`);
-    })
+  localStorage.setItem("HP1", poke1.stats[0].base.toString());
+  localStorage.setItem("HP2", poke2.stats[0].base.toString());
+  for (const attack of poke1.moves) {
+    const attackdiv: HTMLDivElement = document.createElement("div");
+    const name: HTMLHeadingElement = document.createElement("h5");
+    const ul: HTMLUListElement = document.createElement("ul");
+    const type: HTMLLIElement = document.createElement("li");
+    const acc: HTMLLIElement = document.createElement("li");
+    name.innerHTML = attack.name;
+    type.innerHTML = attack.type;
+    acc.innerHTML = `Acc: ${attack.accuracy}`;
+    ul.appendChild(type);
+    ul.appendChild(acc);
+    attackdiv.appendChild(name);
+    attackdiv.appendChild(ul);
+    attackNav.appendChild(attackdiv);
+    attackdiv.addEventListener("click", () => {
+      battleSystem(
+        poke1.stats[1].base,
+        attack.accuracy,
+        poke1.stats[5].base,
+        poke1.stats[2].base,
+        attack.type,
+        poke1.type[0],
+        poke1.type[1],
+        poke2.type[0],
+        poke2.type[1],
+        poke2.stats[1].base,
+        poke2.stats[5].base,
+        poke2.stats[2].base,
+        poke2.moves
+      );
+      oph4.innerHTML = `HP: ${localStorage.getItem("HP2")}`;
+      opLdivBar.setAttribute(
+        "style",
+        `width: ${Math.round(
+          (parseInt(localStorage.getItem("HP2") as string) * 100) /
+            poke2.stats[0].base
+        )}%`
+      );
+      setTimeout(() => {
+        youh4.innerHTML = `HP: ${localStorage.getItem("HP1")}`;
+        youRdivBar.setAttribute(
+          "style",
+          `width: ${Math.round(
+            (parseInt(localStorage.getItem("HP1") as string) * 100) /
+              poke1.stats[0].base
+          )}%`
+        );
+      }, 3100);
+    });
   }
   body.appendChild(attackNav);
 };
