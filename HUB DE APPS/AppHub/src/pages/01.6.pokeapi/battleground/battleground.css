@@ -147,6 +147,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  
 }
 .attackNav div:hover {
   background-color: rgba(250, 235, 215, 0.322);
@@ -181,4 +182,24 @@
   border: 2px solid gold;
   font-family: 'pokemon';
   font-size: 22px;
+}
+.disabledDivPK{
+  pointer-events:none;
+  color: gray;
+  background-color: rgba(250, 235, 215, 0.76) !important;
+}
+.winspk {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 40vh;
+  width: 40vw;
+  right: 30vw;
+  background-color: whitesmoke;
+  color: black;
+  border: 2px solid gold;
+  font-family: 'pokemon';
+  font-size: 30px;
+  padding: 1rem 2rem;
 }

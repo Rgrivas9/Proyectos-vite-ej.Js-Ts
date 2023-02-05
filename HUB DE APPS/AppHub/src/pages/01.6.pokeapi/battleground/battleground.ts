@@ -133,6 +133,8 @@ export const battleground = (): void => {
     attackdiv.appendChild(ul);
     attackNav.appendChild(attackdiv);
     attackdiv.addEventListener("click", () => {
+      const alldivs=document.querySelectorAll<HTMLDivElement>('.attackNav div') as NodeListOf<HTMLDivElement>
+      alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))
       battleSystem(
         poke1.stats[1].base,
         attack.accuracy,
@@ -159,6 +161,16 @@ export const battleground = (): void => {
         )}%`
         );
       }, 1200);
+      setTimeout(() => {
+        if (parseInt(localStorage.getItem("HP2") as string)<=0){
+          alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))
+          const maindivbattle=document.querySelector<HTMLDivElement>('.mainDivBattle') as HTMLDivElement
+          const youDiv:HTMLDivElement=document.createElement('div')
+          maindivbattle.appendChild(youDiv)
+          youDiv.innerHTML=`${localStorage.getItem('Poke1')} wins!`
+          youDiv.setAttribute('class','winspk')
+        }
+      }, 3700);
       ;
       setTimeout(() => {
         youh4.innerHTML = `HP: ${localStorage.getItem("HP1")}`;
@@ -170,6 +182,23 @@ export const battleground = (): void => {
           )}%`
         );
       }, 5200);
+      setTimeout(() => {
+        alldivs.forEach(div=>div.removeAttribute('class'))
+      }, 7705);
+      setTimeout(() => {
+        if (parseInt(localStorage.getItem("HP1") as string)<=0){
+          alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))
+          const maindivbattle=document.querySelector<HTMLDivElement>('.mainDivBattle') as HTMLDivElement
+          const youDiv:HTMLDivElement=document.createElement('div')
+          maindivbattle.appendChild(youDiv)
+          youDiv.innerHTML=`${localStorage.getItem('Poke2')} wins!`
+          youDiv.setAttribute('class','winspk')
+        }
+      }, 7720);
+      setTimeout(() => {
+        if (parseInt(localStorage.getItem("HP2") as string)<=0){
+          alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))}
+      }, 7705);
     });
   }
   body.appendChild(attackNav);
