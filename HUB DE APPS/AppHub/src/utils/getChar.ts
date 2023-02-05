@@ -135,8 +135,8 @@ export const character = async (n:number) => {
     habilities: abilitys,
     moves: moves,
     images: {
-      front: char.sprites.front_default,
-      back: char.sprites.back_default,
+      front: char.sprites.versions["generation-v"]["black-white"].animated.front_default,
+      back: char.sprites.versions["generation-v"]["black-white"].animated.back_default,
       main: char.sprites.other.home.front_default,
       shiny: char.sprites.other.home.front_shiny,
     },

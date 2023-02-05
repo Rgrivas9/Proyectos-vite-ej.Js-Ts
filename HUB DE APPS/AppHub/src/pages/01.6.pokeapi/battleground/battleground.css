@@ -29,11 +29,6 @@
   justify-content: space-between;
   font-family: 'pokemon';
 }
-.Battleground .mainDivBattle img {
-  background-image: url("https://res.cloudinary.com/di0zpa5yw/image/upload/v1675542205/gamesHub/base_a69rkf.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
 .mainDivOp {
     display: flex;
     justify-content: flex-end;
@@ -43,11 +38,10 @@
     padding-bottom: 0;
 }
 .mainDivOp img {
-    width: 160px;
-    background-position-y: 55px;
+    width: 120px;
     background-position-x: 0px;
-    overflow: visible;
-}
+    background-position-y: -5px;
+  }
 .mainDivOpL {
     background-color: rgba(0, 0, 0, 0.808);
     display: flex;
@@ -142,6 +136,9 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+}
+.attackNav div:hover {
+  background-color: rgba(250, 235, 215, 0.322);
 }
 .attackNav h5 {
   font-size: 11px;

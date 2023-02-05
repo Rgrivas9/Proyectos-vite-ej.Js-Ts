@@ -75,6 +75,7 @@
   border-radius: 5px;
   color: rgb(34, 20, 20);
 }
+
 .Pokemon .youPokemon {
   width: 45%;
   display: flex;
@@ -100,9 +101,10 @@
 }
 .Pokemon .youPokemon figure {
   margin-top: 1rem;
+  padding-bottom: 0.5rem;
   width: 100%;
   display: flex;
-  flex-direction: column;
+  gap: 3rem;
   align-items: center;
   justify-content: center;
   height: 150px;
@@ -119,8 +121,10 @@
 
 .Pokemon .opPokemon figure {
   margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  padding-left: 4rem;
   display: flex;
-  flex-direction: column;
+  gap: 3rem;
   align-items: center;
   justify-content: center;
   width: 100%;
