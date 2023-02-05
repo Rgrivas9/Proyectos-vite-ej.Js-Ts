@@ -86,11 +86,12 @@ export const battleSystem = (
   maindivbattle.appendChild(youDiv)
   youDiv.innerHTML=`${localStorage.getItem('Poke1')} ha usado ${attackname}!`
   youDiv.setAttribute('class','resultBattle')
-  setTimeout(() => {if (youList[1]=='null'){youDiv.innerHTML=`Pero ${attackname} no tiene efecto en los enemigos!`;youList=[]}
+  setTimeout(() => {if (youList[youList.length-1]=='noeffect'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke2')} es inmune a ese tipo de ataque!`;youList=[]}
+    if (youList[1]=='null'){youDiv.innerHTML=`Pero ${attackname} no tiene efecto en los enemigos!`;youList=[]}
   if (youList[1]=='fail'){youDiv.innerHTML=`Pero falló!`;youList=[]}
   if (youList[1]=='evade'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke2')} lo esquivó!`;youList=[]}
   if (youList[1]=='effect'){youDiv.innerHTML=`Es muy efectivo!`;youList=['critical']}
-  if (youList[1]=='noeffect'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke2')} es inmune a ese tipo de ataque!`;youList=[]}
+  
   if (youList[0]=='normal'){youDiv.innerHTML=`El ataque ha tenido éxito!`;youList=['critical']}}, 1200)
   setTimeout(() => {if (isCritical=='yes' && youList[0]=='critical'){youDiv.innerHTML=`Daño crítico!`}else {youDiv.innerHTML=''}}, 2400)
   setTimeout(() => {
@@ -173,11 +174,12 @@ export const battleSystem = (
       maindivbattle.appendChild(youDiv)
       youDiv.innerHTML=`${localStorage.getItem('Poke2')} ha usado ${opAttack.name}!`
       youDiv.setAttribute('class','resultBattleop')
-      setTimeout(() => {if (opList[1]=='null'){youDiv.innerHTML=`Pero ${opAttack.name} no tiene efecto en los enemigos!`;opList=[]}
+      setTimeout(() => {if (opList[opList.length-1]=='noeffect'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke1')} es inmune a ese tipo de ataque!`;opList=[]}
+        if (opList[1]=='null'){youDiv.innerHTML=`Pero ${opAttack.name} no tiene efecto en los enemigos!`;opList=[]}
       if (opList[1]=='fail'){youDiv.innerHTML=`Pero falló!`;opList=[]}
       if (opList[1]=='evade'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke1')} lo esquivó!`;opList=[]}
       if (opList[1]=='effect'){youDiv.innerHTML=`Es muy efectivo!`;opList=['critical']}
-      if (opList[1]=='noeffect'){youDiv.innerHTML=`Pero ${localStorage.getItem('Poke1')} es inmune a ese tipo de ataque!`;opList=[]}
+      
       if (opList[0]=='normal'){youDiv.innerHTML=`El ataque ha tenido éxito!`;opList=['critical']}}, 1200)
       setTimeout(() => {if (opisCritical=='yes' && opList[0]=='critical'){youDiv.innerHTML=`Daño crítico!`}else {youDiv.innerHTML=''}}, 2400)
       setTimeout(() => {

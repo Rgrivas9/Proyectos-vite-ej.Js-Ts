@@ -194,7 +194,7 @@ export const battleground = (): void => {
           youDiv.innerHTML=`${localStorage.getItem('Poke2')} wins!`
           youDiv.setAttribute('class','winspk')
         }
-      }, 7720);
+      }, 7705);
       setTimeout(() => {
         if (parseInt(localStorage.getItem("HP2") as string)<=0){
           alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))}
