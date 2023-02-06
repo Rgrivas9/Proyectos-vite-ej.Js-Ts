@@ -12,14 +12,13 @@ import {
 import { sortPokemons } from "../../utils/sortPokemons";
 import { battleground } from "./battleground/battleground";
 
-
 export const pokeapi = () => {
   const body = document.querySelector<HTMLBodyElement>(
     "body"
   ) as HTMLBodyElement;
-  localStorage.setItem('Poke1','none')
-  localStorage.setItem('Poke2','none')
-  localStorage.setItem('Pokeapi','true')
+  localStorage.setItem("Poke1", "none");
+  localStorage.setItem("Poke2", "none");
+  localStorage.setItem("Pokeapi", "true");
   body.removeAttribute("id");
   body.setAttribute("class", "Pokemon");
   const nav: HTMLElement = document.createElement("nav");
@@ -29,31 +28,33 @@ export const pokeapi = () => {
   navDiv1h3.innerHTML = "Difficulty";
   const difficultyBtn: HTMLButtonElement = document.createElement("button");
   let pKDif: string = "";
-  pKDif='init'
+  pKDif = "init";
   localStorage.getItem("PKDif")
     ? (pKDif = localStorage.getItem("PKDif") as string)
     : localStorage.setItem("PKDif", "Easy");
   pKDif = localStorage.getItem("PKDif") as string;
   let PKRecordEASY: string = "";
-  PKRecordEASY='init'
+  PKRecordEASY = "init";
   localStorage.getItem("PKRecordEasy")
     ? (PKRecordEASY = localStorage.getItem("PKRecordEasy") as string)
     : localStorage.setItem("PKRecordEasy", "0000");
   PKRecordEASY = localStorage.getItem("PKRecordEasy") as string;
   let PKRecordHARD: string = "";
-  PKRecordHARD='init'
+  PKRecordHARD = "init";
   localStorage.getItem("PKRecordHard")
     ? (PKRecordHARD = localStorage.getItem("PKRecordHard") as string)
     : localStorage.setItem("PKRecordHard", "0000");
   PKRecordHARD = localStorage.getItem("PKRecordHard") as string;
   difficultyBtn.innerHTML = localStorage.getItem("PKDif") as string;
-  difficultyBtn.addEventListener('click',()=>{
-    localStorage.getItem("PKDif")=='Easy' ? localStorage.setItem("PKDif", "Hard") : localStorage.setItem("PKDif", "Easy");
+  difficultyBtn.addEventListener("click", () => {
+    localStorage.getItem("PKDif") == "Easy"
+      ? localStorage.setItem("PKDif", "Hard")
+      : localStorage.setItem("PKDif", "Easy");
     difficultyBtn.innerHTML = localStorage.getItem("PKDif") as string;
     navH2.innerHTML = `RECORD: ${
       localStorage.getItem(`PKRecord${localStorage.getItem("PKDif")}`) as string
-    }`
-  })
+    }`;
+  });
   const navH2: HTMLHeadingElement = document.createElement("h2");
   navH2.innerHTML = `RECORD: ${
     localStorage.getItem(`PKRecord${localStorage.getItem("PKDif")}`) as string
@@ -71,18 +72,32 @@ export const pokeapi = () => {
     "https://res.cloudinary.com/di0zpa5yw/image/upload/v1675264883/gamesHub/salida_bspcsc.png"
   );
   exitImg.addEventListener("click", () => {
-    if (localStorage.getItem('Pokeapi')=='true'){
-    body.removeAttribute("class");
-    body.setAttribute("id", "principalB");
-    body.innerHTML = "";
-    principal();}
-    if (localStorage.getItem('Pokeapi')=='false'){
+    if (localStorage.getItem("Pokeapi") == "true") {
+      body.removeAttribute("class");
+      body.setAttribute("id", "principalB");
+      body.innerHTML = "";
+      principal();
+    }
+    if (localStorage.getItem("Pokeapi") == "false") {
       body.removeAttribute("class");
       body.innerHTML = "";
-      localStorage.setItem('Pokeapi','true')
-      if(parseInt(localStorage.getItem('scorePoke') as string)>parseInt(localStorage.getItem(`PKRecord${localStorage.getItem('PKDif') as string}`) as string)){localStorage.setItem(`PKRecord${localStorage.getItem('PKDif') as string}`,localStorage.getItem('scorePoke') as string)}
-      difficultyBtn.removeAttribute('disabled')
-      pokeapi();}
+      localStorage.setItem("Pokeapi", "true");
+      if (localStorage.getItem('HP2')=='0'){if (
+        parseInt(localStorage.getItem("scorePoke") as string) >
+        parseInt(
+          localStorage.getItem(
+            `PKRecord${localStorage.getItem("PKDif") as string}`
+          ) as string
+        )
+      ) {
+        localStorage.setItem(
+          `PKRecord${localStorage.getItem("PKDif") as string}`,
+          localStorage.getItem("scorePoke") as string
+        );
+      }}
+      difficultyBtn.removeAttribute("disabled");
+      pokeapi();
+    }
   });
   returnBtn.appendChild(exitImg);
   navDiv1.appendChild(navDiv1h3);
@@ -106,23 +121,25 @@ export const pokeapi = () => {
   const divDiv1Div: HTMLDivElement = document.createElement("div");
   const emptyFig: HTMLElement = document.createElement("figure");
   const emptyFig2: HTMLElement =
-    document.createElement("figure"); /* ---------------------------------emptyfig */
-  const emptyFig1img:HTMLImageElement=document.createElement('img')
-  emptyFig1img.setAttribute('class','emptyFig1img')
-  const emptyFig1h2:HTMLHeadingElement=document.createElement('h2')
-  emptyFig1h2.setAttribute('class','emptyFig1h2')
-  const emptyFig2img:HTMLImageElement=document.createElement('img')
-  emptyFig2img.setAttribute('class','emptyFig2img')
-  const emptyFig2h2:HTMLHeadingElement=document.createElement('h2')
-  emptyFig2h2.setAttribute('class','emptyFig2h2')
-  emptyFig.appendChild(emptyFig1img)
-  emptyFig.appendChild(emptyFig1h2)
-  emptyFig2.appendChild(emptyFig2img)
-  emptyFig2.appendChild(emptyFig2h2)
+    document.createElement(
+      "figure"
+    ); /* ---------------------------------emptyfig */
+  const emptyFig1img: HTMLImageElement = document.createElement("img");
+  emptyFig1img.setAttribute("class", "emptyFig1img");
+  const emptyFig1h2: HTMLHeadingElement = document.createElement("h2");
+  emptyFig1h2.setAttribute("class", "emptyFig1h2");
+  const emptyFig2img: HTMLImageElement = document.createElement("img");
+  emptyFig2img.setAttribute("class", "emptyFig2img");
+  const emptyFig2h2: HTMLHeadingElement = document.createElement("h2");
+  emptyFig2h2.setAttribute("class", "emptyFig2h2");
+  emptyFig.appendChild(emptyFig1img);
+  emptyFig.appendChild(emptyFig1h2);
+  emptyFig2.appendChild(emptyFig2img);
+  emptyFig2.appendChild(emptyFig2h2);
   const divDiv2Btn: HTMLButtonElement = document.createElement("button");
   divDiv2Btn.innerHTML = "VS";
-  divDiv2Btn.setAttribute('disabled','true')
-  divDiv2Btn.setAttribute('class','fightbutton')
+  divDiv2Btn.setAttribute("disabled", "true");
+  divDiv2Btn.setAttribute("class", "fightbutton");
   const divDiv3H3: HTMLHeadingElement = document.createElement("h3");
   divDiv3H3.innerHTML = "Opponent";
   const divDiv3Div: HTMLDivElement = document.createElement("div");
@@ -251,27 +268,25 @@ export const pokeapi = () => {
       section.appendChild(fig);
     }
   });
-  emptyFig.addEventListener('click',()=>{
-    emptyFig1img.removeAttribute('src')
-    emptyFig1h2.innerHTML=''
-    localStorage.setItem('Poke1','none')
-    divDiv2Btn.innerHTML='VS'
-    divDiv2Btn.setAttribute('disabled','true')
-    divDiv2Btn.classList.remove('fightPokemons')
-    
-  })
-  emptyFig2.addEventListener('click',()=>{
-    emptyFig2img.removeAttribute('src')
-    emptyFig2h2.innerHTML=''
-    localStorage.setItem('Poke2','none')
-    divDiv2Btn.innerHTML='VS'
-    divDiv2Btn.setAttribute('disabled','true')
-    divDiv2Btn.classList.remove('fightPokemons')
-
-  })
-  divDiv2Btn.addEventListener('click',()=>{
-    battleground()
-    localStorage.setItem('Pokeapi','false')
-    difficultyBtn.setAttribute('disabled','true')
-  })
+  emptyFig.addEventListener("click", () => {
+    emptyFig1img.removeAttribute("src");
+    emptyFig1h2.innerHTML = "";
+    localStorage.setItem("Poke1", "none");
+    divDiv2Btn.innerHTML = "VS";
+    divDiv2Btn.setAttribute("disabled", "true");
+    divDiv2Btn.classList.remove("fightPokemons");
+  });
+  emptyFig2.addEventListener("click", () => {
+    emptyFig2img.removeAttribute("src");
+    emptyFig2h2.innerHTML = "";
+    localStorage.setItem("Poke2", "none");
+    divDiv2Btn.innerHTML = "VS";
+    divDiv2Btn.setAttribute("disabled", "true");
+    divDiv2Btn.classList.remove("fightPokemons");
+  });
+  divDiv2Btn.addEventListener("click", () => {
+    battleground();
+    localStorage.setItem("Pokeapi", "false");
+    difficultyBtn.setAttribute("disabled", "true");
+  });
 };

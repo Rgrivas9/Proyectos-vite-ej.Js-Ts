@@ -1,6 +1,6 @@
 import { imgButton } from "./imgButton"
 
-export const gameFigure=(image:string,game:string,page:Function,scored='0000'):HTMLElement=>{
+export const gameFigure=(image:string,game:string,page:Function,id:string):HTMLElement=>{
     const figure:HTMLElement=document.createElement('figure')
     const a:HTMLAnchorElement=document.createElement('a')
     const img:HTMLImageElement=document.createElement('img')
@@ -26,11 +26,30 @@ export const gameFigure=(image:string,game:string,page:Function,scored='0000'):H
     })
     const dificultyButton:HTMLButtonElement=document.createElement('button')
     dificultyButton.setAttribute('class','dificultyButton')
-    dificultyButton.innerHTML='Easy'
+    
     const gameName:HTMLHeadingElement=document.createElement('h2')
     const score:HTMLHeadingElement=document.createElement('h4')
     gameName.innerHTML=game
-    score.innerHTML=`RECORD ${scored}`
+    dificultyButton.innerHTML=localStorage.getItem(`${id}Dif`) as string
+    score.innerHTML=`RECORD ${localStorage.getItem(`${id}Record${localStorage.getItem(`${id}Dif`)}`)}`
+    if (localStorage.getItem(`${id}Record${localStorage.getItem(`${id}Dif`)}`)==null){
+        localStorage.setItem(`${id}Dif`,'Easy')
+        localStorage.setItem(`${id}RecordEasy`,`0000`)
+        localStorage.setItem(`${id}RecordHard`,`0000`)
+        dificultyButton.innerHTML=localStorage.getItem(`${id}Dif`) as string
+        score.innerHTML=`RECORD ${localStorage.getItem(`${id}Record${localStorage.getItem(`${id}Dif`)}`)}`
+    }
+    dificultyButton.addEventListener('click',()=>{
+        if (localStorage.getItem(`${id}Dif`) as string=='Easy'){
+            localStorage.setItem(`${id}Dif`,'Hard')
+            dificultyButton.innerHTML=localStorage.getItem(`${id}Dif`) as string
+            score.innerHTML=`RECORD ${localStorage.getItem(`${id}Record${localStorage.getItem(`${id}Dif`)}`)}`
+
+        }else {localStorage.setItem(`${id}Dif`,'Easy')
+        dificultyButton.innerHTML=localStorage.getItem(`${id}Dif`) as string
+        score.innerHTML=`RECORD ${localStorage.getItem(`${id}Record${localStorage.getItem(`${id}Dif`)}`)}`}
+
+    })
     div.appendChild(score)
     div.appendChild(dificultyButton)
     div2.appendChild(modal)

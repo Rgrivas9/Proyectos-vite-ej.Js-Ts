@@ -134,7 +134,8 @@ export const battleground = (): void => {
       const hp2pre:number=parseInt(localStorage.getItem('HP2') as string)
       const average1:number=(poke1.stats[1].base+poke1.stats[2].base+poke1.stats[5].base)/3
       const average2:number=(poke2.stats[1].base+poke2.stats[2].base+poke2.stats[5].base)/3
-      const average:number=Math.abs(average1-average2)
+      let average:number=average2-average1
+      if (average<0){average=10}
       let scored:number=parseInt(localStorage.getItem('scorePoke') as string)
       const alldivs=document.querySelectorAll<HTMLDivElement>('.attackNav div') as NodeListOf<HTMLDivElement>
       alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))
@@ -174,8 +175,15 @@ export const battleground = (): void => {
           const maindivbattle=document.querySelector<HTMLDivElement>('.mainDivBattle') as HTMLDivElement
           const youDiv:HTMLDivElement=document.createElement('div')
           maindivbattle.appendChild(youDiv)
-          youDiv.innerHTML=`${localStorage.getItem('Poke1')} wins!`
+          youDiv.innerHTML=`${localStorage.getItem('Poke1')} wins! Score: ${localStorage.getItem("scorePoke")}`
           youDiv.setAttribute('class','winspk')
+          const prescore:number=parseInt(
+            localStorage.getItem(
+              `PKRecord${localStorage.getItem("PKDif") as string}`
+            ) as string
+          )
+          if (parseInt(localStorage.getItem("scorePoke") as string)>prescore){
+            youDiv.innerHTML += ' Nuevo Record!!!!'}
         }
       }, 3700);
       ;
@@ -195,6 +203,8 @@ export const battleground = (): void => {
       setTimeout(() => {
         if (parseInt(localStorage.getItem("HP1") as string)<=0){
           alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))
+          localStorage.setItem('scorePoke','0000')
+          score.innerHTML = `SCORE: ${localStorage.getItem("scorePoke")}`;
           const maindivbattle=document.querySelector<HTMLDivElement>('.mainDivBattle') as HTMLDivElement
           const youDiv:HTMLDivElement=document.createElement('div')
           maindivbattle.appendChild(youDiv)
