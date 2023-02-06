@@ -12,6 +12,8 @@ import {
 import { sortPokemons } from "../../utils/sortPokemons";
 import { battleground } from "./battleground/battleground";
 import { genSelect } from "../../components/genselect";
+import { stickyPK } from "../../utils/stickyPK";
+import { globalRandomNumber } from "../../utils/randomNumber";
 
 export const pokeapi = () => {
   const body = document.querySelector<HTMLBodyElement>(
@@ -91,11 +93,13 @@ export const pokeapi = () => {
     "src",
     "https://res.cloudinary.com/di0zpa5yw/image/upload/v1675264883/gamesHub/salida_bspcsc.png"
   );
+  //const scroll=()=>{console.log('scroll')}
   returnBtn.addEventListener("click", () => {
     if (localStorage.getItem("Pokeapi") == "true") {
       body.removeAttribute("class");
       body.setAttribute("id", "principalB");
       body.innerHTML = "";
+      window.removeEventListener("scroll", stickyPK);
       principal();
     }
     if (localStorage.getItem("Pokeapi") == "false") {
@@ -245,30 +249,30 @@ export const pokeapi = () => {
     localStorage.getItem("genFilter")
       ? (nav2div1_1select.value = localStorage.getItem("genFilter") as string)
       : (nav2div1_1select.value = "All");
-      let genPK: Pokemon[] = [];
-      if ((localStorage.getItem("genFilter") as string) == "All") {
-        genPK = pokemonList;
-      }
-      if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 0 && pokemon.id < 152
-        );
-      }
-      if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 151 && pokemon.id < 252
-        );
-      }
-      if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 251 && pokemon.id < 387
-        );
-      }
-      if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 386 && pokemon.id < 494
-        );
-      }
+    let genPK: Pokemon[] = [];
+    if ((localStorage.getItem("genFilter") as string) == "All") {
+      genPK = pokemonList;
+    }
+    if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 0 && pokemon.id < 152
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 151 && pokemon.id < 252
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 251 && pokemon.id < 387
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 386 && pokemon.id < 494
+      );
+    }
     const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
     const filteredP: Pokemon[] = filterPokemonsName(
       typedP,
@@ -292,30 +296,30 @@ export const pokeapi = () => {
     localStorage.getItem("typefilter")
       ? (nav2div1select.value = localStorage.getItem("typefilter") as string)
       : (nav2div1select.value = "All");
-      let genPK: Pokemon[] = [];
-      if ((localStorage.getItem("genFilter") as string) == "All") {
-        genPK = pokemonList;
-      }
-      if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 0 && pokemon.id < 152
-        );
-      }
-      if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 151 && pokemon.id < 252
-        );
-      }
-      if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 251 && pokemon.id < 387
-        );
-      }
-      if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 386 && pokemon.id < 494
-        );
-      }
+    let genPK: Pokemon[] = [];
+    if ((localStorage.getItem("genFilter") as string) == "All") {
+      genPK = pokemonList;
+    }
+    if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 0 && pokemon.id < 152
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 151 && pokemon.id < 252
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 251 && pokemon.id < 387
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 386 && pokemon.id < 494
+      );
+    }
     const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
     const filteredP: Pokemon[] = filterPokemonsName(
       typedP,
@@ -344,23 +348,23 @@ export const pokeapi = () => {
       genPK = pokemonList;
     }
     if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
-      genPK = pokemonList.filter((pokemon) => 
-        pokemon.id > 0 && pokemon.id < 152
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 0 && pokemon.id < 152
       );
     }
     if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
-      genPK = pokemonList.filter((pokemon) => 
-        pokemon.id > 151 && pokemon.id < 252
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 151 && pokemon.id < 252
       );
     }
     if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
-      genPK = pokemonList.filter((pokemon) => 
-        pokemon.id > 251 && pokemon.id < 387
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 251 && pokemon.id < 387
       );
     }
     if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
-      genPK = pokemonList.filter((pokemon) => 
-        pokemon.id > 386 && pokemon.id < 494
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 386 && pokemon.id < 494
       );
     }
     const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
@@ -386,30 +390,30 @@ export const pokeapi = () => {
     localStorage.getItem("genFilter")
       ? (nav2div1_1select.value = localStorage.getItem("genFilter") as string)
       : (nav2div1_1select.value = "All");
-      let genPK: Pokemon[] = [];
-      if ((localStorage.getItem("genFilter") as string) == "All") {
-        genPK = pokemonList;
-      }
-      if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 0 && pokemon.id < 152
-        );
-      }
-      if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 151 && pokemon.id < 252
-        );
-      }
-      if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 251 && pokemon.id < 387
-        );
-      }
-      if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
-        genPK = pokemonList.filter((pokemon) => 
-          pokemon.id > 386 && pokemon.id < 494
-        );
-      }
+    let genPK: Pokemon[] = [];
+    if ((localStorage.getItem("genFilter") as string) == "All") {
+      genPK = pokemonList;
+    }
+    if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 0 && pokemon.id < 152
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 151 && pokemon.id < 252
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 251 && pokemon.id < 387
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 386 && pokemon.id < 494
+      );
+    }
     const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
     const filteredP: Pokemon[] = filterPokemonsName(
       typedP,
@@ -441,5 +445,116 @@ export const pokeapi = () => {
     battleground();
     localStorage.setItem("Pokeapi", "false");
     difficultyBtn.setAttribute("disabled", "true");
+  });
+  window.addEventListener("scroll", stickyPK);
+  const randomButton2: HTMLButtonElement = document.createElement("button");
+  const randomButton1: HTMLButtonElement = document.createElement("button");
+  randomButton2.setAttribute("class", "randomButton2");
+  randomButton1.setAttribute("class", "randomButton1");
+  randomButton1.innerHTML = "Vs Random";
+  randomButton2.innerHTML = "Random";
+  nav2.appendChild(randomButton1);
+  nav2.appendChild(randomButton2);
+  randomButton1.addEventListener("click", () => {
+    localStorage.getItem("typefilter")
+      ? (nav2div1select.value = localStorage.getItem("typefilter") as string)
+      : (nav2div1select.value = "All");
+    localStorage.getItem("namefilter")
+      ? (nav2div0Input.value = localStorage.getItem("namefilter") as string)
+      : (nav2div0Input.value = "");
+    localStorage.getItem("genFilter")
+      ? (nav2div1_1select.value = localStorage.getItem("genFilter") as string)
+      : (nav2div1_1select.value = "All");
+    let genPK: Pokemon[] = [];
+    if ((localStorage.getItem("genFilter") as string) == "All") {
+      genPK = pokemonList;
+    }
+    if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 0 && pokemon.id < 152
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 151 && pokemon.id < 252
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 251 && pokemon.id < 387
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 386 && pokemon.id < 494
+      );
+    }
+    const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
+    const filteredP: Pokemon[] = filterPokemonsName(
+      typedP,
+      nav2div0Input.value
+    );
+    const sortedP: Pokemon[] = sortPokemons(filteredP, nav2div2select.value);
+    const pokemon: Pokemon = sortedP[globalRandomNumber(sortedP.length) - 1];
+    emptyFig2img.setAttribute("src", pokemon.images.front);
+    emptyFig2h2.innerHTML = pokemon.name;
+    localStorage.setItem("Poke2", pokemon.name);
+    if (localStorage.getItem("Poke1") != "none") {
+      divDiv2Btn.innerHTML = "FIGHT!";
+      divDiv2Btn.removeAttribute("disabled");
+      divDiv2Btn.classList.add("fightPokemons");
+    }
+  });
+  randomButton2.addEventListener("click", () => {
+    localStorage.getItem("typefilter")
+      ? (nav2div1select.value = localStorage.getItem("typefilter") as string)
+      : (nav2div1select.value = "All");
+    localStorage.getItem("namefilter")
+      ? (nav2div0Input.value = localStorage.getItem("namefilter") as string)
+      : (nav2div0Input.value = "");
+    localStorage.getItem("genFilter")
+      ? (nav2div1_1select.value = localStorage.getItem("genFilter") as string)
+      : (nav2div1_1select.value = "All");
+    let genPK: Pokemon[] = [];
+    if ((localStorage.getItem("genFilter") as string) == "All") {
+      genPK = pokemonList;
+    }
+    if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 0 && pokemon.id < 152
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 151 && pokemon.id < 252
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 251 && pokemon.id < 387
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
+      genPK = pokemonList.filter(
+        (pokemon) => pokemon.id > 386 && pokemon.id < 494
+      );
+    }
+    const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
+    const filteredP: Pokemon[] = filterPokemonsName(
+      typedP,
+      nav2div0Input.value
+    );
+    const sortedP: Pokemon[] = sortPokemons(filteredP, nav2div2select.value);
+    const pokemon1: Pokemon = sortedP[globalRandomNumber(sortedP.length) - 1];
+    const pokemon2: Pokemon = sortedP[globalRandomNumber(sortedP.length) - 1];
+    emptyFig1img.setAttribute("src", pokemon1.images.front);
+    emptyFig1h2.innerHTML = pokemon1.name;
+    localStorage.setItem("Poke1", pokemon1.name);
+    divDiv2Btn.innerHTML = "FIGHT!";
+    divDiv2Btn.removeAttribute("disabled");
+    divDiv2Btn.classList.add("fightPokemons");
+    emptyFig2img.setAttribute("src", pokemon2.images.front);
+    emptyFig2h2.innerHTML = pokemon2.name;
+    localStorage.setItem("Poke2", pokemon2.name);
   });
 };

@@ -41,6 +41,16 @@
   background-color: rgba(0, 0, 0, 0.829);
   height: 200px;
   min-width: 650px;
+  transition: all 5s ease-in-out;
+}
+.divHeaderSticky {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 5;
+}
+.navPokeSticky {
+  margin-top: 200px;
 }
 .vs {
   display: flex;
@@ -243,6 +253,8 @@
   font-family: "pokemon";
 }
 .Pokemon .pokeSection {
+  background-color: rgba(0, 0, 0, 0.692);
+  min-height: 90vh;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
 }
@@ -356,9 +368,8 @@
   align-items: center;
   padding-top: 5px;
   align-items: center;
-  
 }
-.pokeSection .habdivPK div h5{
+.pokeSection .habdivPK div h5 {
   font-size: 12px;
 }
 .pokeSection .ulstatsDiv .movesUl li {
@@ -427,4 +438,35 @@
 }
 .h2pPKhidden {
   display: none;
+}
+.randomButton2 {
+  position: fixed;
+  bottom: 50px;
+  left: 250px;
+  font-family: "pokemon";
+  color: gold;
+  background-color: rgba(34, 34, 161, 0.842);
+  border: 2px solid gold;
+  padding: 1rem 2rem;
+  margin-left: 30px;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  z-index: 5;
+}
+.randomButton1 {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  font-family: "pokemon";
+  color: gold;
+  background-color: rgba(34, 34, 161, 0.842);
+  border: 2px solid gold;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    z-index: 5;
 }
