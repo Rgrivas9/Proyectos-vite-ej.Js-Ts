@@ -20,67 +20,60 @@ export const battleSystem = (
   let hp1: number = parseInt(localStorage.getItem("HP1") as string);
   let hp2: number = parseInt(localStorage.getItem("HP2") as string);
   /* let score: number = parseInt(localStorage.getItem("scorePoke") as string); */
-  let baseAttack: number = 10;
+  let baseAttack: number = 12;
   let opBaseAttack: number = 5;
   let youList:string[]=['normal']
   let isCritical:string='no'
   /* ----------------------------------------------------------------------------------------declaración */
   if (localStorage.getItem("PKDif") == "Hard") {
-    baseAttack = 5; opBaseAttack=10 
+    baseAttack = 6; opBaseAttack=10
   }
-  console.log("base", baseAttack);
+  if (acc!=null && acc<100){baseAttack=baseAttack+2}
+  if (acc!=null && acc<90){baseAttack=baseAttack+2}
+  if (acc!=null && acc<80){baseAttack=baseAttack+2}
   /* -----------------------------------------------------------------------------------------transformación de tu base attack */
   baseAttack = baseAttack + attack / 10;
-  console.log("ataque despues de tu ataque y antes de variables", baseAttack);
   if (acc == null) {
     youList.push('null')
     baseAttack = baseAttack * 0;
-    console.log("ataque nulo");
   }
-  const fail: number = globalRandomNumber(100);
+  const fail: number = globalRandomNumber(105);
   if (fail > acc && acc != null) {
     youList.push('fail')
     baseAttack = baseAttack * 0;
-    console.log("ataque fallido");
   }
 
   const critic: number = globalRandomNumber(100);
   if (critic < 8) {
     isCritical='yes'
-    baseAttack = baseAttack * 2;
-    console.log("ataque crítico");
+    baseAttack = baseAttack * 2.75;
   }
 
   const evade: number = globalRandomNumber(500);
   if (evade < speedOP) {
     youList.push('evade')
     baseAttack = baseAttack * 0;
-    console.log("ataque esquivado");
   }
-  console.log("ataque antes de tipos", baseAttack);
   /* ---------------------------------------------------------------------------------------comparación de tipos de tu ataque */
   const result: number = compareTypes(attackType, type1OP, type2OP);
   if (result == 1) {
     youList.push('effect')
-    baseAttack = baseAttack * 1.5;
-    console.log("efectivo");
+    baseAttack = baseAttack * 2;
   }
   if (result == 2) {
     youList.push('noeffect')
     baseAttack = baseAttack * 0;
-    console.log("nulo");
   }
   /* ----------------------------------------------------------------------------------------defensa oponente */
-  console.log("ataque antes de defensa", baseAttack);
   if (baseAttack != 0) {
-    baseAttack = baseAttack - deffenseOP / 10;
+    baseAttack = baseAttack - deffenseOP / 12;
     if (baseAttack < 5) {
       baseAttack = 5;
     }
+    baseAttack=baseAttack+globalRandomNumber(5)
   }
-  console.log("ataque final", baseAttack);
+  
   hp2 = hp2 - Math.round(baseAttack);
-  console.log(hp2);
   const maindivbattle=document.querySelector<HTMLDivElement>('.mainDivBattle') as HTMLDivElement
   const youDiv:HTMLDivElement=document.createElement('div')
   maindivbattle.appendChild(youDiv)
@@ -99,7 +92,6 @@ export const battleSystem = (
   }, 3600);
   if (hp2 <= 0) {
     hp2=0
-    console.log("WIN!");
   }
   localStorage.setItem("HP2", hp2.toString());
   if (hp2 > 0) {
@@ -108,64 +100,51 @@ export const battleSystem = (
       let opList:string[]=['normal']
       let opisCritical:string='no'
       opBaseAttack = opBaseAttack + attackOP / 10;
-      console.log(
-        "ataque despues de ataque oponente y antes de variables",
-        opBaseAttack
-      );
       const opAttack: Moves =
         attacksListOP[globalRandomNumber(attacksListOP.length) - 1];
       if (opAttack.accuracy == null) {
         opList.push('null')
         opBaseAttack = opBaseAttack * 0;
-        console.log("ataque op nulo");
       }
       const fail: number = globalRandomNumber(100);
       if (fail > opAttack.accuracy && opAttack.accuracy != null) {
         opList.push('fail')
         opBaseAttack = opBaseAttack * 0;
-        console.log("ataque op fallido");
       }
 
       const critic: number = globalRandomNumber(100);
       if (critic < 8) {
         opisCritical='yes'
-        opBaseAttack = opBaseAttack * 2;
-        console.log("ataque op crítico");
+        opBaseAttack = opBaseAttack * 2.75;
       }
 
       const evade: number = globalRandomNumber(500);
       if (evade < speed) {
         opList.push('evade')
         opBaseAttack = opBaseAttack * 0;
-        console.log("ataque op esquivado");
       }
-      console.log("ataque op antes de tipos", opBaseAttack);
       /* ---------------------------------------------------------------------------tipos */
       const result: number = compareTypes(opAttack.type, type1, type2);
       if (result == 1) {
         opList.push('effect')
-        opBaseAttack = opBaseAttack * 1.5;
-        console.log("efectivo");
+        opBaseAttack = opBaseAttack * 2;
       }
       if (result == 2) {
         opList.push('noeffect')
         opBaseAttack = opBaseAttack * 0;
-        console.log("nulo");
       }
       /* --------------------------------------------------------------------defensa */
-      console.log("ataque op antes de defensa", opBaseAttack);
       if (opBaseAttack != 0) {
-        opBaseAttack = opBaseAttack - deffense / 10;
+        opBaseAttack = opBaseAttack - deffense / 12;
         if (opBaseAttack < 5) {
           opBaseAttack = 5;
         }
+        opBaseAttack=opBaseAttack+globalRandomNumber(5)
       }
-      console.log("ataque final", opBaseAttack);
+      
       hp1 = hp1 - Math.round(opBaseAttack);
-      console.log(hp1);
       if (hp1 <= 0) {
         hp1=0
-        console.log("LOSE!");
       }
       
       localStorage.setItem("HP1", hp1.toString());
@@ -194,10 +173,10 @@ const bug: string[] = ["grass", "psychic","dark"];
 const dragon: string[] = ["dragon", "none"];
 const electric: string[] = ["water", "flying"];
 const fairy: string[] = ["dragon", "fighting","dark"];
-const fighting: string[] = ["normal", "none","dark"];
+const fighting: string[] = ["normal", "ice","dark","rock","steel"];
 const fire: string[] = ["steel", "bug", "ice", "grass"];
 const flying: string[] = ["bug", "fighting", "grass"];
-const ghost: string[] = ["ghost", "flying"];
+const ghost: string[] = ["ghost", "flying","psychic"];
 const grass: string[] = ["water", "rock", "ground"];
 const ground: string[] = ["steel", "electric", "rock", "poison", "fire"];
 const ice: string[] = ["grass", "dragon", "ice", "flying"];

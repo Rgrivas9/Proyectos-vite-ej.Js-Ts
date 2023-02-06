@@ -27,20 +27,28 @@ export const battleground = (): void => {
   )[0];
   /* -------------------------------------------------------------------------------pokemons */
   const mainDiv: HTMLDivElement = document.createElement("div");
-  const exitPK=document.querySelector<HTMLButtonElement>('.exitPK') as HTMLButtonElement
-  exitPK.setAttribute('disabled','true')
-  const audio:HTMLAudioElement=document.createElement('audio')
-  audio.setAttribute('src','https://res.cloudinary.com/di0zpa5yw/video/upload/v1675677596/gamesHub/begin_cdtvuf.mp3')
-  audio.setAttribute('autoplay','true')
-  mainDiv.appendChild(audio)
+  const exitPK = document.querySelector<HTMLButtonElement>(
+    ".exitPK"
+  ) as HTMLButtonElement;
+  exitPK.setAttribute("disabled", "true");
+  const audio: HTMLAudioElement = document.createElement("audio");
+  audio.setAttribute(
+    "src",
+    "https://res.cloudinary.com/di0zpa5yw/video/upload/v1675677596/gamesHub/begin_cdtvuf.mp3"
+  );
+  audio.setAttribute("autoplay", "true");
+  mainDiv.appendChild(audio);
   setTimeout(() => {
-    const audio2:HTMLAudioElement=document.createElement('audio')
-  audio2.setAttribute('src','https://res.cloudinary.com/di0zpa5yw/video/upload/v1675677600/gamesHub/battle_k68rci.mp3')
-  audio2.setAttribute('autoplay','true')
-  audio2.setAttribute('loop','true')
-  audio2.setAttribute('class','audioPK2')
-  mainDiv.appendChild(audio2)
-  exitPK.removeAttribute('disabled')
+    const audio2: HTMLAudioElement = document.createElement("audio");
+    audio2.setAttribute(
+      "src",
+      "https://res.cloudinary.com/di0zpa5yw/video/upload/v1675677600/gamesHub/battle_k68rci.mp3"
+    );
+    audio2.setAttribute("autoplay", "true");
+    audio2.setAttribute("loop", "true");
+    audio2.setAttribute("class", "audioPK2");
+    mainDiv.appendChild(audio2);
+    exitPK.removeAttribute("disabled");
   }, 2850);
 
   mainDiv.setAttribute("class", "mainDivBattle");
@@ -147,14 +155,22 @@ export const battleground = (): void => {
     attackdiv.appendChild(ul);
     attackNav.appendChild(attackdiv);
     attackdiv.addEventListener("click", () => {
-      const hp2pre:number=parseInt(localStorage.getItem('HP2') as string)
-      const average1:number=(poke1.stats[1].base+poke1.stats[2].base+poke1.stats[5].base)/3
-      const average2:number=(poke2.stats[1].base+poke2.stats[2].base+poke2.stats[5].base)/3
-      let average:number=average2-average1
-      if (average<0){average=10}
-      let scored:number=parseInt(localStorage.getItem('scorePoke') as string)
-      const alldivs=document.querySelectorAll<HTMLDivElement>('.attackNav div') as NodeListOf<HTMLDivElement>
-      alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))
+      const hp2pre: number = parseInt(localStorage.getItem("HP2") as string);
+      const average1: number =
+        (poke1.stats[1].base + poke1.stats[2].base + poke1.stats[5].base) / 3;
+      const average2: number =
+        (poke2.stats[1].base + poke2.stats[2].base + poke2.stats[5].base) / 3;
+      let average: number = average2 - average1;
+      if (average < 0) {
+        average = 10;
+      }
+      let scored: number = parseInt(
+        localStorage.getItem("scorePoke") as string
+      );
+      const alldivs = document.querySelectorAll<HTMLDivElement>(
+        ".attackNav div"
+      ) as NodeListOf<HTMLDivElement>;
+      alldivs.forEach((div) => div.setAttribute("class", "disabledDivPK"));
       battleSystem(
         poke1.stats[1].base,
         attack.accuracy,
@@ -172,46 +188,86 @@ export const battleground = (): void => {
         attack.name
       );
       setTimeout(() => {
-      oph4.innerHTML = `HP: ${localStorage.getItem("HP2")}`;
-      opLdivBar.setAttribute(
-        "style",
-        `width: ${Math.round(
-          (parseInt(localStorage.getItem("HP2") as string) * 100) /
-            poke2.stats[0].base
-        )}%`
+        oph4.innerHTML = `HP: ${localStorage.getItem("HP2")}`;
+        if (
+          parseInt(localStorage.getItem("HP2") as string) <=
+          poke2.stats[0].base / 2
+        ) {
+          opLdivBar.setAttribute("class", "opLdivBar50");
+        }
+        if (
+          parseInt(localStorage.getItem("HP2") as string) <=
+          poke2.stats[0].base / 4
+        ) {
+          opLdivBar.setAttribute("class", "opLdivBar10");
+        }
+        opLdivBar.setAttribute(
+          "style",
+          `width: ${Math.round(
+            (parseInt(localStorage.getItem("HP2") as string) * 100) /
+              poke2.stats[0].base
+          )}%`
         );
-        console.log(average)
-          scored=Math.round((scored + ((hp2pre-parseInt(localStorage.getItem("HP2") as string))*average)*2.5))
-          localStorage.setItem('scorePoke',scored.toString())
-          score.innerHTML = `SCORE: ${localStorage.getItem("scorePoke")}`;
+        console.log(average);
+        scored = Math.round(
+          scored +
+            (hp2pre - parseInt(localStorage.getItem("HP2") as string)) *
+              average *
+              2.5
+        );
+        localStorage.setItem("scorePoke", scored.toString());
+        score.innerHTML = `SCORE: ${localStorage.getItem("scorePoke")}`;
       }, 1200);
       setTimeout(() => {
-        if (parseInt(localStorage.getItem("HP2") as string)<=0){
-          alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))
-          const maindivbattle=document.querySelector<HTMLDivElement>('.mainDivBattle') as HTMLDivElement
-          const audio2=document.querySelector<HTMLAudioElement>('.audioPK2') as HTMLAudioElement
-          const youDiv:HTMLDivElement=document.createElement('div')
-          maindivbattle.appendChild(youDiv)
-          mainDiv.removeChild(audio2)
-          const audiowin:HTMLAudioElement=document.createElement('audio')
-          audiowin.setAttribute('src','https://res.cloudinary.com/di0zpa5yw/video/upload/v1675680188/gamesHub/victory_blkf4g.mp3')
-          audiowin.setAttribute('autoplay','true')
-          audiowin.setAttribute('loop','true')
-          mainDiv.appendChild(audiowin)
-          youDiv.innerHTML=`${localStorage.getItem('Poke1')} wins! Score: ${localStorage.getItem("scorePoke")}`
-          youDiv.setAttribute('class','winspk')
-          const prescore:number=parseInt(
+        if (parseInt(localStorage.getItem("HP2") as string) <= 0) {
+          alldivs.forEach((div) => div.setAttribute("class", "disabledDivPK"));
+          const maindivbattle = document.querySelector<HTMLDivElement>(
+            ".mainDivBattle"
+          ) as HTMLDivElement;
+          const audio2 = document.querySelector<HTMLAudioElement>(
+            ".audioPK2"
+          ) as HTMLAudioElement;
+          const youDiv: HTMLDivElement = document.createElement("div");
+          maindivbattle.appendChild(youDiv);
+          mainDiv.removeChild(audio2);
+          const audiowin: HTMLAudioElement = document.createElement("audio");
+          audiowin.setAttribute(
+            "src",
+            "https://res.cloudinary.com/di0zpa5yw/video/upload/v1675680188/gamesHub/victory_blkf4g.mp3"
+          );
+          audiowin.setAttribute("autoplay", "true");
+          audiowin.setAttribute("loop", "true");
+          mainDiv.appendChild(audiowin);
+          youDiv.innerHTML = `${localStorage.getItem(
+            "Poke1"
+          )} wins! Score: ${localStorage.getItem("scorePoke")}`;
+          youDiv.setAttribute("class", "winspk");
+          const prescore: number = parseInt(
             localStorage.getItem(
               `PKRecord${localStorage.getItem("PKDif") as string}`
             ) as string
-          )
-          if (parseInt(localStorage.getItem("scorePoke") as string)>prescore){
-            youDiv.innerHTML += ' Nuevo Record!!!!'}
+          );
+          if (
+            parseInt(localStorage.getItem("scorePoke") as string) > prescore
+          ) {
+            youDiv.innerHTML += " Nuevo Record!!!!";
+          }
         }
       }, 3700);
-      ;
       setTimeout(() => {
         youh4.innerHTML = `HP: ${localStorage.getItem("HP1")}`;
+        if (
+          parseInt(localStorage.getItem("HP1") as string) <=
+          poke1.stats[0].base / 2
+        ) {
+          youRdivBar.setAttribute("class", "youRdivBar50");
+        }
+        if (
+          parseInt(localStorage.getItem("HP1") as string) <=
+          poke1.stats[0].base / 4
+        ) {
+          youRdivBar.setAttribute("class", "youRdivBar10");
+        }
         youRdivBar.setAttribute(
           "style",
           `width: ${Math.round(
@@ -221,30 +277,38 @@ export const battleground = (): void => {
         );
       }, 5200);
       setTimeout(() => {
-        alldivs.forEach(div=>div.removeAttribute('class'))
+        alldivs.forEach((div) => div.removeAttribute("class"));
       }, 7705);
       setTimeout(() => {
-        if (parseInt(localStorage.getItem("HP1") as string)<=0){
-          alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))
-          localStorage.setItem('scorePoke','0000')
-          const audio2=document.querySelector<HTMLAudioElement>('.audioPK2') as HTMLAudioElement
-          mainDiv.removeChild(audio2)
-          const audiolose:HTMLAudioElement=document.createElement('audio')
-          audiolose.setAttribute('src','https://res.cloudinary.com/di0zpa5yw/video/upload/v1675681181/gamesHub/lavanda_u5d0z7.mp3')
-          audiolose.setAttribute('autoplay','true')
-          audiolose.setAttribute('loop','true')
-          mainDiv.appendChild(audiolose)
+        if (parseInt(localStorage.getItem("HP1") as string) <= 0) {
+          alldivs.forEach((div) => div.setAttribute("class", "disabledDivPK"));
+          localStorage.setItem("scorePoke", "0000");
+          const audio2 = document.querySelector<HTMLAudioElement>(
+            ".audioPK2"
+          ) as HTMLAudioElement;
+          mainDiv.removeChild(audio2);
+          const audiolose: HTMLAudioElement = document.createElement("audio");
+          audiolose.setAttribute(
+            "src",
+            "https://res.cloudinary.com/di0zpa5yw/video/upload/v1675681181/gamesHub/lavanda_u5d0z7.mp3"
+          );
+          audiolose.setAttribute("autoplay", "true");
+          audiolose.setAttribute("loop", "true");
+          mainDiv.appendChild(audiolose);
           score.innerHTML = `SCORE: ${localStorage.getItem("scorePoke")}`;
-          const maindivbattle=document.querySelector<HTMLDivElement>('.mainDivBattle') as HTMLDivElement
-          const youDiv:HTMLDivElement=document.createElement('div')
-          maindivbattle.appendChild(youDiv)
-          youDiv.innerHTML=`${localStorage.getItem('Poke2')} wins!`
-          youDiv.setAttribute('class','winspk')
+          const maindivbattle = document.querySelector<HTMLDivElement>(
+            ".mainDivBattle"
+          ) as HTMLDivElement;
+          const youDiv: HTMLDivElement = document.createElement("div");
+          maindivbattle.appendChild(youDiv);
+          youDiv.innerHTML = `${localStorage.getItem("Poke2")} wins!`;
+          youDiv.setAttribute("class", "winspk");
         }
       }, 7705);
       setTimeout(() => {
-        if (parseInt(localStorage.getItem("HP2") as string)<=0){
-          alldivs.forEach(div=>div.setAttribute('class','disabledDivPK'))}
+        if (parseInt(localStorage.getItem("HP2") as string) <= 0) {
+          alldivs.forEach((div) => div.setAttribute("class", "disabledDivPK"));
+        }
       }, 7705);
     });
   }

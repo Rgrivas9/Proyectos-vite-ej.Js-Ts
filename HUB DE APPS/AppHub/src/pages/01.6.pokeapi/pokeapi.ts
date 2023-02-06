@@ -71,6 +71,7 @@ export const pokeapi = () => {
   <p> Selecciona una dificultad y dos pokemons.</p>
   <p> Los ataques de tu pokemon los seleccionas tú entre una lista de 5.
   En cada ataque aparece el tipo del ataque y su efectividad (acc) que influyen en como afecta al pokemon rival según su tipo.</p>
+  <p> Si el acc es menor, la probabilidad de fallo es mayor, pero también el daño en caso de impacto </p>
   <p> Los ataques se ven influidos por las capacidades de ataque, defensa y velocidad de los pokemons. </p>
   <p> El pokemon rival elige su ataque aleatoriamente entre sus ataques posibles. </p>
   <p> Si derrotas al pokemon enemigo se valida la puntuación, en caso contrario no.</p>

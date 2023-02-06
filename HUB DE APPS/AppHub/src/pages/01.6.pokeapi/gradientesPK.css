@@ -892,6 +892,14 @@
     rgba(176, 88, 160, 1) 100%
   );
 }
+.watersteel {
+  background: rgb(56, 153, 248);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 153, 248, 1) 0%,
+    rgba(168, 168, 192, 1) 100%
+  );
+}
 .waterrock {
   background: rgb(56, 153, 248);
   background: linear-gradient(
