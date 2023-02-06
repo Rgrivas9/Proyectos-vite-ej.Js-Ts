@@ -11,6 +11,7 @@ import {
 } from "../../utils/filterPokemons";
 import { sortPokemons } from "../../utils/sortPokemons";
 import { battleground } from "./battleground/battleground";
+import { genSelect } from "../../components/genselect";
 
 export const pokeapi = () => {
   const body = document.querySelector<HTMLBodyElement>(
@@ -28,19 +29,19 @@ export const pokeapi = () => {
   navDiv1h3.innerHTML = "Difficulty";
   const difficultyBtn: HTMLButtonElement = document.createElement("button");
   let pKDif: string = "";
-  pKDif = "init";
+  pKDif = pKDif += "init";
   localStorage.getItem("PKDif")
     ? (pKDif = localStorage.getItem("PKDif") as string)
     : localStorage.setItem("PKDif", "Easy");
   pKDif = localStorage.getItem("PKDif") as string;
   let PKRecordEASY: string = "";
-  PKRecordEASY = "init";
+  PKRecordEASY = PKRecordEASY += "init";
   localStorage.getItem("PKRecordEasy")
     ? (PKRecordEASY = localStorage.getItem("PKRecordEasy") as string)
     : localStorage.setItem("PKRecordEasy", "0000");
   PKRecordEASY = localStorage.getItem("PKRecordEasy") as string;
   let PKRecordHARD: string = "";
-  PKRecordHARD = "init";
+  PKRecordHARD = PKRecordHARD += "init";
   localStorage.getItem("PKRecordHard")
     ? (PKRecordHARD = localStorage.getItem("PKRecordHard") as string)
     : localStorage.setItem("PKRecordHard", "0000");
@@ -64,6 +65,24 @@ export const pokeapi = () => {
   const htpBtn: HTMLButtonElement = document.createElement("button");
   htpBtn.innerHTML = "How2Play";
   htpBtn.setAttribute("class", "htpPK");
+  const h2p: HTMLDivElement = document.createElement("div");
+  body.appendChild(h2p);
+  h2p.innerHTML = `<p>Juego de batalla por turnos.</p>
+  <p> Selecciona una dificultad y dos pokemons.</p>
+  <p> Los ataques de tu pokemon los seleccionas tú entre una lista de 5.
+  En cada ataque aparece el tipo del ataque y su efectividad (acc) que influyen en como afecta al pokemon rival según su tipo.</p>
+  <p> Los ataques se ven influidos por las capacidades de ataque, defensa y velocidad de los pokemons. </p>
+  <p> El pokemon rival elige su ataque aleatoriamente entre sus ataques posibles. </p>
+  <p> Si derrotas al pokemon enemigo se valida la puntuación, en caso contrario no.</p>
+  <p> La puntuación se calcula mediante la diferencia de la media de las estadísticas de los dos pokemons con un mínimo de 10 en el caso que tu pokemon sea superior al rival y se multiplica por los puntos de vida que
+  consigas quitarle al pokemon rival.</p>
+  <p>-----------</p>
+  <p> IMPORTANTE: Una vez finalizado el combate, en caso de haber ganado, es necesarío salir de nuevo a esta pantalla para guardar la puntuación en caso de nuevo record.</p>`;
+  h2p.setAttribute("class", "h2pPK");
+  h2p.classList.add("h2pPKhidden");
+  htpBtn.addEventListener("click", () => {
+    h2p.classList.toggle("h2pPKhidden");
+  });
   const returnBtn: HTMLButtonElement = document.createElement("button");
   returnBtn.setAttribute("class", "exitPK");
   const exitImg: HTMLImageElement = document.createElement("img");
@@ -71,7 +90,7 @@ export const pokeapi = () => {
     "src",
     "https://res.cloudinary.com/di0zpa5yw/image/upload/v1675264883/gamesHub/salida_bspcsc.png"
   );
-  exitImg.addEventListener("click", () => {
+  returnBtn.addEventListener("click", () => {
     if (localStorage.getItem("Pokeapi") == "true") {
       body.removeAttribute("class");
       body.setAttribute("id", "principalB");
@@ -82,19 +101,21 @@ export const pokeapi = () => {
       body.removeAttribute("class");
       body.innerHTML = "";
       localStorage.setItem("Pokeapi", "true");
-      if (localStorage.getItem('HP2')=='0'){if (
-        parseInt(localStorage.getItem("scorePoke") as string) >
-        parseInt(
-          localStorage.getItem(
-            `PKRecord${localStorage.getItem("PKDif") as string}`
-          ) as string
-        )
-      ) {
-        localStorage.setItem(
-          `PKRecord${localStorage.getItem("PKDif") as string}`,
-          localStorage.getItem("scorePoke") as string
-        );
-      }}
+      if (localStorage.getItem("HP2") == "0") {
+        if (
+          parseInt(localStorage.getItem("scorePoke") as string) >
+          parseInt(
+            localStorage.getItem(
+              `PKRecord${localStorage.getItem("PKDif") as string}`
+            ) as string
+          )
+        ) {
+          localStorage.setItem(
+            `PKRecord${localStorage.getItem("PKDif") as string}`,
+            localStorage.getItem("scorePoke") as string
+          );
+        }
+      }
       difficultyBtn.removeAttribute("disabled");
       pokeapi();
     }
@@ -160,11 +181,19 @@ export const pokeapi = () => {
   const nav2div0h4: HTMLHeadingElement = document.createElement("h4");
   nav2div0h4.innerHTML = "Name";
   const nav2div0Input: HTMLInputElement = document.createElement("input");
+
+  const nav2div1_1: HTMLDivElement = document.createElement("div");
+  const nav2div1_1h4: HTMLHeadingElement = document.createElement("h4");
+  nav2div1_1h4.innerHTML = "Gen";
+  const nav2div1_1select: HTMLSelectElement = genSelect();
+  nav2div1_1select.setAttribute("class", "searchPKgen");
+
   const nav2div1: HTMLDivElement = document.createElement("div");
   const nav2div1h4: HTMLHeadingElement = document.createElement("h4");
   nav2div1h4.innerHTML = "Type";
   const nav2div1select: HTMLSelectElement = typeSelect();
   nav2div1select.setAttribute("class", "searchPKtype");
+
   const nav2div2: HTMLDivElement = document.createElement("div");
   const nav2div2h4: HTMLHeadingElement = document.createElement("h4");
   nav2div2h4.innerHTML = "Sort";
@@ -176,6 +205,8 @@ export const pokeapi = () => {
   sortName.innerHTML = "Name";
   nav2div0.appendChild(nav2div0h4);
   nav2div0.appendChild(nav2div0Input);
+  nav2div1_1.appendChild(nav2div1_1h4);
+  nav2div1_1.appendChild(nav2div1_1select);
   nav2div1.appendChild(nav2div1h4);
   nav2div1.appendChild(nav2div1select);
   nav2div2.appendChild(nav2div2h4);
@@ -183,6 +214,7 @@ export const pokeapi = () => {
   nav2div2select.appendChild(sortName);
   nav2div2.appendChild(nav2div2select);
   nav2.appendChild(nav2div0);
+  nav2.appendChild(nav2div1_1);
   nav2.appendChild(nav2div1);
   nav2.appendChild(nav2div2);
 
@@ -199,6 +231,7 @@ export const pokeapi = () => {
   localStorage.setItem("namefilter", "");
   localStorage.setItem("typefilter", "All");
   localStorage.setItem("sortPokemon", "Id");
+  localStorage.setItem("genFilter", "All");
   nav2div0Input.addEventListener("input", () => {
     localStorage.setItem("namefilter", nav2div0Input.value);
     section.innerHTML = "";
@@ -208,10 +241,81 @@ export const pokeapi = () => {
     localStorage.getItem("sortPokemon")
       ? (nav2div2select.value = localStorage.getItem("sortPokemon") as string)
       : (nav2div2select.value = "Id");
-    const typedP: Pokemon[] = filterPokemonsType(
-      pokemonList,
-      nav2div1select.value
+    localStorage.getItem("genFilter")
+      ? (nav2div1_1select.value = localStorage.getItem("genFilter") as string)
+      : (nav2div1_1select.value = "All");
+      let genPK: Pokemon[] = [];
+      if ((localStorage.getItem("genFilter") as string) == "All") {
+        genPK = pokemonList;
+      }
+      if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 0 && pokemon.id < 152
+        );
+      }
+      if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 151 && pokemon.id < 252
+        );
+      }
+      if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 251 && pokemon.id < 387
+        );
+      }
+      if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 386 && pokemon.id < 494
+        );
+      }
+    const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
+    const filteredP: Pokemon[] = filterPokemonsName(
+      typedP,
+      nav2div0Input.value
     );
+    const sortedP: Pokemon[] = sortPokemons(filteredP, nav2div2select.value);
+    for (const pokemon of sortedP) {
+      const fig: HTMLElement = figurePokemon(pokemon);
+      section.appendChild(fig);
+    }
+  });
+  nav2div1_1select.addEventListener("change", () => {
+    localStorage.setItem("genFilter", nav2div1_1select.value);
+    section.innerHTML = "";
+    localStorage.getItem("namefilter")
+      ? (nav2div0Input.value = localStorage.getItem("namefilter") as string)
+      : (nav2div0Input.value = "");
+    localStorage.getItem("sortPokemon")
+      ? (nav2div2select.value = localStorage.getItem("sortPokemon") as string)
+      : (nav2div2select.value = "Id");
+    localStorage.getItem("typefilter")
+      ? (nav2div1select.value = localStorage.getItem("typefilter") as string)
+      : (nav2div1select.value = "All");
+      let genPK: Pokemon[] = [];
+      if ((localStorage.getItem("genFilter") as string) == "All") {
+        genPK = pokemonList;
+      }
+      if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 0 && pokemon.id < 152
+        );
+      }
+      if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 151 && pokemon.id < 252
+        );
+      }
+      if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 251 && pokemon.id < 387
+        );
+      }
+      if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 386 && pokemon.id < 494
+        );
+      }
+    const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
     const filteredP: Pokemon[] = filterPokemonsName(
       typedP,
       nav2div0Input.value
@@ -231,10 +335,34 @@ export const pokeapi = () => {
     localStorage.getItem("sortPokemon")
       ? (nav2div2select.value = localStorage.getItem("sortPokemon") as string)
       : (nav2div2select.value = "Id");
-    const typedP: Pokemon[] = filterPokemonsType(
-      pokemonList,
-      nav2div1select.value
-    );
+    localStorage.getItem("genFilter")
+      ? (nav2div1_1select.value = localStorage.getItem("genFilter") as string)
+      : (nav2div1_1select.value = "All");
+    let genPK: Pokemon[] = [];
+    if ((localStorage.getItem("genFilter") as string) == "All") {
+      genPK = pokemonList;
+    }
+    if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
+      genPK = pokemonList.filter((pokemon) => 
+        pokemon.id > 0 && pokemon.id < 152
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
+      genPK = pokemonList.filter((pokemon) => 
+        pokemon.id > 151 && pokemon.id < 252
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
+      genPK = pokemonList.filter((pokemon) => 
+        pokemon.id > 251 && pokemon.id < 387
+      );
+    }
+    if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
+      genPK = pokemonList.filter((pokemon) => 
+        pokemon.id > 386 && pokemon.id < 494
+      );
+    }
+    const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
     const filteredP: Pokemon[] = filterPokemonsName(
       typedP,
       nav2div0Input.value
@@ -254,10 +382,34 @@ export const pokeapi = () => {
     localStorage.getItem("namefilter")
       ? (nav2div0Input.value = localStorage.getItem("namefilter") as string)
       : (nav2div0Input.value = "");
-    const typedP: Pokemon[] = filterPokemonsType(
-      pokemonList,
-      nav2div1select.value
-    );
+    localStorage.getItem("genFilter")
+      ? (nav2div1_1select.value = localStorage.getItem("genFilter") as string)
+      : (nav2div1_1select.value = "All");
+      let genPK: Pokemon[] = [];
+      if ((localStorage.getItem("genFilter") as string) == "All") {
+        genPK = pokemonList;
+      }
+      if ((localStorage.getItem("genFilter") as string) == "1st Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 0 && pokemon.id < 152
+        );
+      }
+      if ((localStorage.getItem("genFilter") as string) == "2nd Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 151 && pokemon.id < 252
+        );
+      }
+      if ((localStorage.getItem("genFilter") as string) == "3rd Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 251 && pokemon.id < 387
+        );
+      }
+      if ((localStorage.getItem("genFilter") as string) == "4th Generation") {
+        genPK = pokemonList.filter((pokemon) => 
+          pokemon.id > 386 && pokemon.id < 494
+        );
+      }
+    const typedP: Pokemon[] = filterPokemonsType(genPK, nav2div1select.value);
     const filteredP: Pokemon[] = filterPokemonsName(
       typedP,
       nav2div0Input.value

@@ -17,3 +17,9 @@ logout https://res.cloudinary.com/di0zpa5yw/image/upload/v1675277789/gamesHub/ce
 pokeback https://res.cloudinary.com/di0zpa5yw/image/upload/v1675434055/gamesHub/pokooo_cxzirm.jpg
 base pokemon https://res.cloudinary.com/di0zpa5yw/image/upload/v1675542205/gamesHub/base_a69rkf.png
 bg battle https://res.cloudinary.com/di0zpa5yw/image/upload/v1675554181/gamesHub/images_xoyjda.png
+begin battle https://res.cloudinary.com/di0zpa5yw/video/upload/v1675677596/gamesHub/begin_cdtvuf.mp3
+battle music https://res.cloudinary.com/di0zpa5yw/video/upload/v1675677600/gamesHub/battle_k68rci.mp3
+victory audio https://res.cloudinary.com/di0zpa5yw/video/upload/v1675680188/gamesHub/victory_blkf4g.mp3
+lavanda https://res.cloudinary.com/di0zpa5yw/video/upload/v1675681181/gamesHub/lavanda_u5d0z7.mp3
+spinner https://res.cloudinary.com/di0zpa5yw/image/upload/v1675693289/gamesHub/mewgif_mx5wq6.gif
+gif space https://res.cloudinary.com/di0zpa5yw/image/upload/v1675694049/gamesHub/g1dIhn_oajzb2.gif

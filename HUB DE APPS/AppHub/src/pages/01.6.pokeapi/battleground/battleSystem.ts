@@ -190,11 +190,11 @@ export const battleSystem = (
   }
 };
 
-const bug: string[] = ["grass", "psychic"];
+const bug: string[] = ["grass", "psychic","dark"];
 const dragon: string[] = ["dragon", "none"];
 const electric: string[] = ["water", "flying"];
-const fairy: string[] = ["dragon", "fighting"];
-const fighting: string[] = ["normal", "none"];
+const fairy: string[] = ["dragon", "fighting","dark"];
+const fighting: string[] = ["normal", "none","dark"];
 const fire: string[] = ["steel", "bug", "ice", "grass"];
 const flying: string[] = ["bug", "fighting", "grass"];
 const ghost: string[] = ["ghost", "flying"];
@@ -206,6 +206,7 @@ const psychic: string[] = ["poison", "fighting"];
 const rock: string[] = ["bug", "fire", "flying", "ice"];
 const steel: string[] = ["fairy", "ice", "rock"];
 const water: string[] = ["fire", "ground", "rock"];
+const dark: string[] = ["ghost", "psychic"];
 
 const inmufairy: string[] = ["dragon", "none"];
 const inmufighting: string[] = ["ghost", "none"];
@@ -214,6 +215,7 @@ const inmughost: string[] = ["normal", "fighting"];
 const inmuground: string[] = ["electric", "none"];
 const inmunormal: string[] = ["ghost", "none"];
 const inmusteel: string[] = ["poison", "none"];
+const inmudark: string[] = ["psychic", "none"];
 const compareTypes = (
   attackType: string,
   type1: string,
@@ -235,6 +237,18 @@ const compareTypes = (
     for (const type of dragon) {
       if (type1 == type || type2 == type) {
         eficaz = 1;
+      }
+    }
+  }
+  if (attackType === "dark") {
+    for (const type of dark) {
+      if (type1 == type || type2 == type) {
+        eficaz = 1;
+      }
+    }
+    for (const type of inmudark) {
+      if (type1 == type || type2 == type) {
+        inmune = 1;
       }
     }
   }

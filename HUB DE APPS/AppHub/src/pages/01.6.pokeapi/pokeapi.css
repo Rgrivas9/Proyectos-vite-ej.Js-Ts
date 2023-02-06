@@ -155,6 +155,22 @@
   margin-right: 3vw;
   margin-left: 1vw;
 }
+.searchPKgen {
+  width: 10vw;
+  font-family: "pokemon";
+  background: rgb(56, 153, 248);
+  background: linear-gradient(
+    90deg,
+    rgba(56, 153, 248, 1) 0%,
+    rgba(30, 141, 43, 1) 28%,
+    rgba(9, 27, 54, 1) 51%,
+    rgba(108, 58, 58, 1) 76%,
+    rgba(176, 88, 160, 1) 100%
+  );
+  margin-top: 0.4rem;
+  margin-right: 3vw;
+  margin-left: 1vw;
+}
 .searchPKid {
   width: 15vw;
   font-family: "pokemon";
@@ -248,27 +264,26 @@
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
   clip-path: polygon(
-    0% 3%,
-    2% 0%,
-    98% 0%,
-    100% 3%,
-    100% 97%,
-    99% 99%,
-    68% 100%,
-    66% 98%,
-    35% 97%,
-    33% 100%,
     1% 100%,
-    0% 97%
+    45% 100%,
+    47% 98%,
+    56% 98%,
+    57% 100%,
+    99% 100%,
+    100% 98%,
+    100% 2%,
+    99% 0%,
+    1% 0%,
+    0% 2%,
+    0 98%
   );
-  border: 2px solid rgba(0, 0, 0, 0.356);
+  border: 1px solid rgba(0, 0, 0, 0.356);
 }
 .pokeSection section {
   height: 10%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 15%;
   padding-right: 65px;
   background-color: rgba(151, 7, 7, 0.185);
 }
@@ -278,7 +293,7 @@
   justify-content: center;
   align-items: center;
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: 15px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.788);
 }
 .pokeSection section h2 {
@@ -339,20 +354,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 5px;
   align-items: center;
+  
+}
+.pokeSection .habdivPK div h5{
+  font-size: 12px;
 }
 .pokeSection .ulstatsDiv .movesUl li {
-  font-size: 10px;
+  font-size: 9px;
   padding-bottom: 2px;
   width: 110%;
   padding-right: 30px;
 }
 .pokeSection p {
   text-align: left;
-  width: 180px;
+  width: 150px;
   height: 200px;
-  font-size: 14px;
+  font-size: 12px;
   position: absolute;
   display: none;
   color: rgb(182, 54, 54);
@@ -364,6 +383,8 @@
 }
 .pokeSection .habdivPK div:hover p {
   display: flex;
+  position: absolute;
+  top: 45%;
 }
 .Pokemon .pokeSection figure:hover .shiny {
   opacity: 0;
@@ -385,4 +406,25 @@
     rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
     rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
     rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+.h2pPK {
+  position: absolute;
+  height: 300px;
+  width: 400px;
+  top: 8vh;
+  right: 5vw;
+
+  background-color: whitesmoke;
+  color: rgb(121, 67, 5);
+  border: 2px solid gold;
+
+  overflow-y: scroll;
+  padding: 1rem 2rem;
+}
+.h2pPK p {
+  font-size: 11px;
+  text-align: left;
+}
+.h2pPKhidden {
+  display: none;
 }

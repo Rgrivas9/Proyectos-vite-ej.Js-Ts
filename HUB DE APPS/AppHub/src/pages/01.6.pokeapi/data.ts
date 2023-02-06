@@ -32,13 +32,22 @@ export interface Pokemon {
 }
 
 const getPokemons = async () => {
+  const body = document.querySelector<HTMLBodyElement>('body') as HTMLBodyElement
+  const img:HTMLImageElement= document.createElement('img')
+  img.setAttribute('src','https://res.cloudinary.com/di0zpa5yw/image/upload/v1675693289/gamesHub/mewgif_mx5wq6.gif')
+  const div:HTMLDivElement=document.createElement('div')
+  div.setAttribute('class','spinner')
+  div.innerHTML='<p>Cargando...</>'
+  div.appendChild(img)
+  body.appendChild(div)
   let n: number = 0;
   const pokemonList: Pokemon[] = [] as Pokemon[];
-  while (n < 151) {
+  while (n < 493) {
     n++;
     const pokemon: Pokemon = await character(n);
     pokemonList.push(pokemon);
   }
+  body.removeChild(div)
   return pokemonList;
 };
 export const pokemonList:Pokemon[]=await getPokemons()

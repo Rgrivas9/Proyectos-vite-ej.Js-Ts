@@ -73,12 +73,12 @@ const getHability = async (url: string): Promise<any> => {
 /* ------------------------------------------------------------------------------------------------ */
 export const character = async (n:number) => {
   const char = await getCharacter(n); /* pokemon completo */
-  const firstThreeMoves = char.moves.splice(0, 5);
-  const urlList: string[] = []; /* ------------------LISTA DE URLS DE 3 PRIMEROS MOVIENTOS */
+  const firstThreeMoves = ((char.moves).reverse()).splice(0, 5);
+  const urlList: string[] = []; /* ------------------LISTA DE URLS DE 5 últimos MOVIENTOS */
   const moveList: string[] = [];
   for (const move of firstThreeMoves) {
     urlList.push(move.move.url);
-    moveList.push(move.move.name);  /* ----------------lista de nombres 3 primeros movimientos */
+    moveList.push(move.move.name);  /* ----------------lista de nombres 5 últimos movimientos */
   }
   const arrayTypeAcc: string[][] = await getMoveTypes(urlList);
   /*---------------------------------------------- array con tipo de ataque y array con accuracy */

@@ -8,7 +8,7 @@ export const figurePokemon = (pokemon: Pokemon): HTMLElement => {
 
   const section: HTMLElement = document.createElement("section");
   const id: HTMLHeadingElement = document.createElement("h3");
-  id.innerHTML = `n:${pokemon.id}`;
+  id.innerHTML = `# ${pokemon.id}`;
   const name: HTMLHeadingElement = document.createElement("h2");
   name.innerHTML = pokemon.name;
   const typed: HTMLHeadingElement =
