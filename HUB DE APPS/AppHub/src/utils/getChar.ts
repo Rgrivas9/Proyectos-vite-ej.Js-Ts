@@ -73,7 +73,7 @@ const getHability = async (url: string): Promise<any> => {
 /* ------------------------------------------------------------------------------------------------ */
 export const character = async (n:number) => {
   const char = await getCharacter(n); /* pokemon completo */
-  const firstThreeMoves = ((char.moves).reverse()).splice(0, 5);
+  const firstThreeMoves = ((char.moves).reverse()).splice(0, 8);
   const urlList: string[] = []; /* ------------------LISTA DE URLS DE 5 últimos MOVIENTOS */
   const moveList: string[] = [];
   for (const move of firstThreeMoves) {
@@ -113,7 +113,8 @@ export const character = async (n:number) => {
       type: arrayTypeAcc[0][index],
       accuracy: arrayTypeAcc[1][index],
     };
-    moves.push(moved); /* ------------------------------------------------------Ataques */
+    if (moved.accuracy!=null){
+    moves.push(moved)}; /* ------------------------------------------------------Ataques */
   }
   index = -1;
   const abilitys: Hability[] = [];

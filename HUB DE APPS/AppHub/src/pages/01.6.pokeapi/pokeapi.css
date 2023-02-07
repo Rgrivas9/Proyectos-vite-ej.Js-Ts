@@ -334,6 +334,7 @@
   bottom: 14px;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.438);
+  
 }
 .pokeSection .ulstatsDiv {
   display: flex;
@@ -378,6 +379,13 @@
   width: 110%;
   padding-right: 30px;
 }
+.movesUl{
+  height: 200px;
+overflow: scroll;
+overflow-x: hidden;
+scrollbar-width: 3px;
+scrollbar-color: rgba(0, 0, 0, 0.589);}
+
 .pokeSection p {
   text-align: left;
   width: 150px;

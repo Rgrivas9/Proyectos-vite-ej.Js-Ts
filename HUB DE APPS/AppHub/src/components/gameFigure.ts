@@ -7,6 +7,10 @@ export const gameFigure=(image:string,game:string,page:Function,id:string):HTMLE
     const body=document.querySelector<HTMLBodyElement>('body') as HTMLBodyElement
     img.setAttribute('src',image)
     a.appendChild(img)
+    a.classList.add('wait')
+    setTimeout(() => {
+        a.classList.remove('wait')
+    }, 3000);
     a.addEventListener('click',()=>{
         body.innerHTML=''
         page()})
