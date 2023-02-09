@@ -59,7 +59,7 @@ export const main = (): void => {
       "https://res.cloudinary.com/di0zpa5yw/image/upload/v1675189215/gamesHub/paint-palette_hgwh5c.png"
     )
   );
-  h1.innerHTML = "Duel of the games";
+  h1.innerHTML = "Pokemon Arcade";
   h3.innerHTML = "Introduce tu nombre";
   body.appendChild(video);
   div.appendChild(h1);

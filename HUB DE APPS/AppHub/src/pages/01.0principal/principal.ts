@@ -44,7 +44,7 @@ export const principal = (): void => {
   nav.appendChild(changeColour);
   const pokemon: HTMLElement = gameFigure(
     "https://res.cloudinary.com/di0zpa5yw/image/upload/v1675262466/gamesHub/pokebola_otj1s7.png",
-    "Pokemon",pokeapi,'PK'
+    "Pokemon Battle",pokeapi,'PK'
   );
   section.appendChild(pokemon);
   body.appendChild(nav);
